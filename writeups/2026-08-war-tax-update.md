@@ -1,3 +1,9 @@
+<!--
+Email subject: What has the war cost you? We did the math.
+Preview text: Gas, groceries, and the S&P 500, 24 weeks in. Our new interactive tool computes your personal War Tax.
+Hero image alt text: Two boxers rest in their corners on a ring atop an oil tanker in the Strait of Hormuz.
+-->
+
 # The War Tax, Updated: Six Months In
 
 Back in early May, we published our first Data 4 Thought piece, "The Iran War: A War Tax for the Average American, a Windfall for the 1%."
