@@ -712,7 +712,7 @@ function renderDieselChart() {
 function renderBasket() {
   const svg = document.getElementById("basket");
   const items = D.basket.filter((b) => b.feb != null).map((b) => ({ ...b, pct: (b.latest / b.feb - 1) }));
-  const rowH = 40, mt = 26, mb = 10, ml = 150, mr = 150;
+  const rowH = 32, mt = 26, mb = 10, ml = 150, mr = 150;
   const W = 880, H = mt + mb + rowH * items.length;
   svg.setAttribute("viewBox", "0 0 " + W + " " + H);
   while (svg.childNodes.length > 1) svg.removeChild(svg.lastChild);

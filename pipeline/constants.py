@@ -49,6 +49,14 @@ BASKET_SERIES = [
     ("APU0000703112", "Ground beef", "lb"),
     ("APU0000FF1101", "Chicken breast", "lb"),
     ("APU0000717311", "Ground coffee", "lb"),
+    ("APU0000704111", "Bacon", "lb"),
+    ("APU0000710212", "Cheddar cheese", "lb"),
+    ("APU0000711211", "Bananas", "lb"),
+    ("APU0000712112", "Potatoes", "lb"),
+    ("APU0000712311", "Tomatoes", "lb"),
+    ("APU0000701312", "Rice", "lb"),
+    ("APU0000715211", "Sugar", "lb"),
+    ("APU0000713111", "Orange juice", "12 oz"),
 ]
 
 # Weekly US regular retail gasoline (EIA series; FRED mirrors it as GASREGW).

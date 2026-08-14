@@ -3541,6 +3541,62 @@
    "feb": 9.459,
    "latest": 9.317,
    "latest_month": "2026-07"
+  },
+  {
+   "name": "Bacon",
+   "unit": "lb",
+   "feb": 6.904,
+   "latest": 6.584,
+   "latest_month": "2026-07"
+  },
+  {
+   "name": "Cheddar cheese",
+   "unit": "lb",
+   "feb": 5.987,
+   "latest": 5.741,
+   "latest_month": "2026-07"
+  },
+  {
+   "name": "Bananas",
+   "unit": "lb",
+   "feb": 0.653,
+   "latest": 0.65,
+   "latest_month": "2026-07"
+  },
+  {
+   "name": "Potatoes",
+   "unit": "lb",
+   "feb": 0.866,
+   "latest": 0.942,
+   "latest_month": "2026-07"
+  },
+  {
+   "name": "Tomatoes",
+   "unit": "lb",
+   "feb": 1.902,
+   "latest": 2.003,
+   "latest_month": "2026-07"
+  },
+  {
+   "name": "Rice",
+   "unit": "lb",
+   "feb": 1.074,
+   "latest": 1.1,
+   "latest_month": "2026-07"
+  },
+  {
+   "name": "Sugar",
+   "unit": "lb",
+   "feb": 1.016,
+   "latest": 1.024,
+   "latest_month": "2026-07"
+  },
+  {
+   "name": "Orange juice",
+   "unit": "12 oz",
+   "feb": 4.863,
+   "latest": 4.817,
+   "latest_month": "2026-07"
   }
  ],
  "personas": {
