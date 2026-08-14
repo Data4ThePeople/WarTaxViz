@@ -1,0 +1,109 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "The War Tax, Updated: Six Months In",
+      "description": "An interactive tool computes your personal War Tax from the 2026 Iran war — extra gasoline, grocery, and home energy costs versus after-tax S&P 500 gains — and compares your ledger to the median American, the top 1%, and the top 0.1%.",
+      "image": "[[PRISMIC HERO URL]]?auto=format,compress",
+      "datePublished": "2026-08-14T09:00:00-04:00",
+      "dateModified": "2026-08-14T09:00:00-04:00",
+      "articleSection": "Visualization",
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true,
+      "keywords": ["war tax", "2026 Iran war", "gas prices", "inflation", "S&P 500", "wealth inequality"],
+      "author": {
+        "@type": "Person",
+        "name": "Eric Pachman",
+        "url": "https://www.data4thepeople.com/authors/eric-pachman"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Data 4 The People",
+        "url": "https://data4thepeople.com"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.data4thepeople.com/p/war-tax-six-months-in/"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "name": "U.S. War Tax Ledger: Household Costs vs. Market Gains from the 2026 Iran War, February–August 2026",
+      "description": "Weekly ledger of war-attributable household costs versus after-tax stock-market gains since February 27, 2026. Gasoline cost is actual EIA weekly retail price (series EMM_EPMR_PTE_NUS_DPG nationally; nine state series and seven PADD-district series for the state picker) minus a no-war counterfactual built from the median 2015–2025 seasonal price trajectory projected from the last prewar price, multiplied by average household consumption derived from BLS Consumer Expenditure Survey 2024 gasoline spending. Grocery and home energy costs use seasonally adjusted CPI (CUSR0000SAF11 food at home; CUSR0000SEHF01 electricity; CUSR0000SEHF02 utility piped gas) against each category's trailing-12-month prewar trend, applied to CEX 2024 household spending; categories below trend count as negative cost. Grocery basket display uses BLS average price series (eggs APU0000708111, milk APU0000709112, bread APU0000702111, ground beef APU0000703112, chicken breast APU0000FF1101, coffee APU0000717311). On-highway diesel (EMD_EPD2D_PTE_NUS_DPG) is tracked as a leading indicator with the same counterfactual and excluded from the cost total. Market gains apply the S&P 500 change from its February 27, 2026 close (6,878.88, via FRED series SP500) to user-entered holdings, taxed at short-term ordinary rates. Wealth-group holdings are corporate equities and mutual fund shares per household from the Federal Reserve Distributional Financial Accounts, 2026:Q1, which exclude pension and 401(k) holdings.",
+      "url": "https://www.data4thepeople.com/p/war-tax-six-months-in/",
+      "license": "https://www.data4thepeople.com/terms-of-use",
+      "isAccessibleForFree": true,
+      "temporalCoverage": "2026-02-27/..",
+      "spatialCoverage": { "@type": "Place", "name": "United States" },
+      "keywords": ["war tax", "2026 Iran war", "gas prices", "inflation", "S&P 500", "wealth inequality"],
+      "variableMeasured": [
+        "Cumulative war-attributable gasoline cost per household, U.S. dollars",
+        "Cumulative war-attributable food-at-home cost per household, U.S. dollars",
+        "Cumulative war-attributable home energy cost per household, U.S. dollars",
+        "Weekly retail gasoline price, actual and no-war counterfactual, U.S. dollars per gallon",
+        "Weekly on-highway diesel price, actual and no-war counterfactual, U.S. dollars per gallon",
+        "Grocery item average retail price change, February to July 2026, percent",
+        "S&P 500 index change since February 27, 2026, percent",
+        "After-tax stock-market gain by holdings and marginal tax rate, U.S. dollars",
+        "Break-even pre-war investment, U.S. dollars",
+        "Average corporate equities and mutual fund holdings per household by wealth percentile group, U.S. dollars"
+      ],
+      "creator": {
+        "@type": "Organization",
+        "name": "Data 4 The People",
+        "url": "https://data4thepeople.com"
+      },
+      "isBasedOn": [
+        {
+          "@type": "Dataset",
+          "name": "EIA Weekly Retail Gasoline and Diesel Prices",
+          "description": "U.S. Energy Information Administration weekly retail price survey: regular gasoline, all formulations (series EMM_EPMR_PTE_NUS_DPG plus state and PADD-district series) and on-highway diesel (EMD_EPD2D_PTE_NUS_DPG), 2015 to present, dollars per gallon.",
+          "url": "https://www.eia.gov/petroleum/gasdiesel/",
+          "license": "https://www.eia.gov/about/copyrights_reuse.php",
+          "creator": {
+            "@type": "Organization",
+            "name": "U.S. Energy Information Administration",
+            "url": "https://www.eia.gov"
+          }
+        },
+        {
+          "@type": "Dataset",
+          "name": "BLS Consumer Price Index, Average Price Data, and Consumer Expenditure Survey",
+          "description": "Bureau of Labor Statistics monthly CPI series (seasonally adjusted food at home CUSR0000SAF11, electricity CUSR0000SEHF01, utility piped gas CUSR0000SEHF02), average retail price series for six grocery items (APU series), and Consumer Expenditure Survey 2024 average annual household spending on gasoline, food at home, electricity, and natural gas.",
+          "url": "https://www.bls.gov/cpi/",
+          "license": "https://www.bls.gov/bls/linksite.htm",
+          "creator": {
+            "@type": "Organization",
+            "name": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov"
+          }
+        },
+        {
+          "@type": "Dataset",
+          "name": "S&P 500 Index via FRED",
+          "description": "Daily S&P 500 closing values from the Federal Reserve Bank of St. Louis FRED series SP500, February 2026 to present, used to compute the index change from its February 27, 2026 close of 6,878.88.",
+          "url": "https://fred.stlouisfed.org/series/SP500",
+          "license": "https://fred.stlouisfed.org/legal/",
+          "creator": {
+            "@type": "Organization",
+            "name": "Federal Reserve Bank of St. Louis",
+            "url": "https://www.stlouisfed.org"
+          }
+        },
+        {
+          "@type": "Dataset",
+          "name": "Federal Reserve Distributional Financial Accounts",
+          "description": "Federal Reserve Board quarterly estimates of the distribution of U.S. household wealth by percentile group, 2026:Q1 vintage; corporate equities and mutual fund shares line (excludes holdings through DC pensions) and household counts per group, from the networth-levels detail file.",
+          "url": "https://www.federalreserve.gov/releases/z1/dataviz/dfa/",
+          "license": "https://www.federalreserve.gov/disclaimer.htm",
+          "creator": {
+            "@type": "Organization",
+            "name": "Board of Governors of the Federal Reserve System",
+            "url": "https://www.federalreserve.gov"
+          }
+        }
+      ]
+    }
+  ]
+}
