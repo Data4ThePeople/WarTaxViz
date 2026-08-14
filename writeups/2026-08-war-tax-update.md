@@ -6,7 +6,7 @@ Back then, the war was supposed to last a few more weeks.
 
 It has now been 24 weeks since the first strikes, and the conflict has settled into a boxing match with infinite rounds: fight for a bit, go to your corners, fight some more. Except the audience — us — takes the punches. Gasoline is still elevated. Groceries have held surprisingly flat, at least so far. Diesel, which moves every grocery by truck, has not (more on that inside the tool).
 
-Or are we suffering? It depends.
+But are we really suffering? It depends.
 
 Our May piece painted a diverging picture: most of us pay the higher costs, while for a few, stock-market gains (entirely unfazed by the median American's squeeze) dwarf them. But that coverage came before we fully understood how to put our data journalism on AI steroids. Months later, the war hasn't changed. Our skills have.
 
