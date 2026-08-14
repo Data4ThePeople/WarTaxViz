@@ -24,14 +24,14 @@
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://www.data4thepeople.com/p/war-tax-six-months-in/"
+        "@id": "https://www.data4thepeople.com/p/war-tax-viz/"
       }
     },
     {
       "@type": "Dataset",
       "name": "U.S. War Tax Ledger: Household Costs vs. Market Gains from the 2026 Iran War, February–August 2026",
       "description": "Weekly ledger of war-attributable household costs versus after-tax stock-market gains since February 27, 2026. Gasoline cost is actual EIA weekly retail price (series EMM_EPMR_PTE_NUS_DPG nationally; nine state series and seven PADD-district series for the state picker) minus a no-war counterfactual built from the median 2015–2025 seasonal price trajectory projected from the last prewar price, multiplied by average household consumption derived from BLS Consumer Expenditure Survey 2024 gasoline spending. Grocery and home energy costs use seasonally adjusted CPI (CUSR0000SAF11 food at home; CUSR0000SEHF01 electricity; CUSR0000SEHF02 utility piped gas) against each category's trailing-12-month prewar trend, applied to CEX 2024 household spending; categories below trend count as negative cost. Grocery basket display uses BLS average price series (eggs APU0000708111, milk APU0000709112, bread APU0000702111, ground beef APU0000703112, chicken breast APU0000FF1101, coffee APU0000717311). On-highway diesel (EMD_EPD2D_PTE_NUS_DPG) is tracked as a leading indicator with the same counterfactual and excluded from the cost total. Market gains apply the S&P 500 change from its February 27, 2026 close (6,878.88, via FRED series SP500) to user-entered holdings, taxed at short-term ordinary rates. Wealth-group holdings are corporate equities and mutual fund shares per household from the Federal Reserve Distributional Financial Accounts, 2026:Q1, which exclude pension and 401(k) holdings.",
-      "url": "https://www.data4thepeople.com/p/war-tax-six-months-in/",
+      "url": "https://www.data4thepeople.com/p/war-tax-viz/",
       "license": "https://www.data4thepeople.com/terms-of-use",
       "isAccessibleForFree": true,
       "temporalCoverage": "2026-02-27/..",
