@@ -1,0 +1,911 @@
+<meta charset="utf-8">
+<title>The War Tax</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface: #fcfcfb;
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --axis: #c3c2b7;
+    --border: rgba(11, 11, 11, 0.10);
+    --cost: #e34948;
+    --gain: #2a78d6;
+    --cost-wash: rgba(227, 73, 72, 0.10);
+    --gain-wash: rgba(42, 120, 214, 0.10);
+    --up-bad: #d03b3b;
+    --down-good: #006300;
+    --chip: #f0efec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0d0d0d;
+      --surface: #1a1a19;
+      --ink: #ffffff;
+      --ink-2: #c3c2b7;
+      --muted: #898781;
+      --grid: #2c2c2a;
+      --axis: #383835;
+      --border: rgba(255, 255, 255, 0.10);
+      --cost: #e66767;
+      --gain: #3987e5;
+      --cost-wash: rgba(230, 103, 103, 0.12);
+      --gain-wash: rgba(57, 135, 229, 0.12);
+      --up-bad: #e66767;
+      --down-good: #0ca30c;
+      --chip: #262624;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.10);
+    --cost: #e66767;
+    --gain: #3987e5;
+    --cost-wash: rgba(230, 103, 103, 0.12);
+    --gain-wash: rgba(57, 135, 229, 0.12);
+    --up-bad: #e66767;
+    --down-good: #0ca30c;
+    --chip: #262624;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .col { max-width: 700px; margin: 0 auto; padding: 0 20px; }
+  .wide { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+  .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; }
+
+  header.masthead { padding: 56px 0 8px; text-align: left; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 14px;
+  }
+  h1 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-weight: 600; font-size: clamp(40px, 7vw, 64px); line-height: 1.05;
+    margin: 0 0 14px; text-wrap: balance;
+  }
+  .standfirst {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 20px; line-height: 1.45; color: var(--ink-2); margin: 0; max-width: 60ch;
+  }
+  h2 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-weight: 600; font-size: 27px; margin: 56px 0 6px; text-wrap: balance;
+  }
+  .sub { color: var(--ink-2); margin: 0 0 20px; max-width: 62ch; }
+  h3.diesel-head {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-weight: 600; font-size: 21px; margin: 36px 0 6px;
+  }
+  p { max-width: 65ch; }
+
+  /* ── controls ── */
+  .controls-top { margin: 36px 0 0; }
+  .persona-explainer {
+    font-size: 14.5px; line-height: 1.55; color: var(--ink-2);
+    max-width: 62ch; margin: 12px 0 4px; min-height: 3.2em;
+  }
+  .controls {
+    display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: flex-end;
+    margin: 10px 0;
+  }
+  .control-label {
+    display: block; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 8px;
+  }
+  .personas { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); }
+  .personas button {
+    appearance: none; border: 0; background: transparent; color: var(--ink-2);
+    font: 600 13px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 9px 14px; cursor: pointer; border-left: 1px solid var(--border);
+  }
+  .personas button:first-child { border-left: 0; }
+  .personas button[aria-pressed="true"] { background: var(--ink); color: var(--page); }
+  .personas button:focus-visible, .slider-block input:focus-visible, select:focus-visible {
+    outline: 2px solid var(--gain); outline-offset: 2px;
+  }
+  .slider-block { flex: 1 1 320px; min-width: 260px; }
+  .slider-readout { font-weight: 600; font-size: 14px; color: var(--ink); }
+  input[type="range"] { width: 100%; accent-color: var(--gain); margin: 6px 0 2px; }
+  .slider-scale { position: relative; height: 30px; font-size: 11px; color: var(--muted); }
+  .slider-scale .end { position: absolute; top: 0; }
+  .breakeven-tick {
+    position: absolute; top: -2px; transform: translateX(-50%);
+    text-align: center; color: var(--ink-2); font-size: 11px; white-space: nowrap;
+  }
+  .breakeven-tick::before { content: ""; display: block; width: 2px; height: 8px; background: var(--axis); margin: 0 auto 2px; }
+  select {
+    font: 600 13px system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--ink); background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 10px;
+  }
+
+  /* ── hero verdict ── */
+  .verdict { margin: 34px 0 6px; font-size: 21px; color: var(--ink-2); }
+  .verdict .figure {
+    display: block; font-size: clamp(48px, 9vw, 76px); font-weight: 650;
+    line-height: 1.1; color: var(--ink); letter-spacing: -0.01em;
+  }
+  .verdict .dir { font-size: 0.55em; vertical-align: 0.28em; margin-right: 2px; }
+  .dir.bad { color: var(--up-bad); }
+  .dir.good { color: var(--down-good); }
+
+  /* ── cards & charts ── */
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px 20px 12px; margin: 18px 0;
+  }
+  .card svg { display: block; width: 100%; height: auto; }
+  .legend { display: flex; gap: 20px; align-items: center; font-size: 13px; color: var(--ink-2); padding: 2px 4px 10px; }
+  .legend .key { display: inline-block; width: 18px; height: 0; border-top: 3px solid; border-radius: 2px; margin-right: 7px; vertical-align: middle; }
+  .chart-note { font-size: 13px; color: var(--muted); margin: 6px 4px 4px; }
+
+  svg text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .tick-label { font-size: 11.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+  .cat-label { font-size: 12.5px; fill: var(--ink-2); }
+  .val-label { font-size: 13px; font-weight: 650; fill: var(--ink); font-variant-numeric: tabular-nums; }
+  .anno { font-size: 12px; fill: var(--ink-2); }
+  .gridline { stroke: var(--grid); stroke-width: 1; }
+  .baseline { stroke: var(--axis); stroke-width: 1; }
+  .wf-bar { cursor: default; }
+  .wf-bar:hover, .wf-bar:focus { opacity: 0.85; outline: none; }
+
+  /* ── stat tiles ── */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin: 22px 0; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .tile .label { font-size: 13px; color: var(--ink-2); margin-bottom: 4px; }
+  .tile .value { font-size: 30px; font-weight: 650; letter-spacing: -0.01em; }
+  .tile .hint { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+
+  /* persona outcome cards */
+  .persona-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 14px; margin: 20px 0; }
+  .pcard { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .pcard h3 { margin: 0 0 2px; font-size: 15px; font-weight: 650; }
+  .pcard .holding { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+  .pcard .net { font-size: 27px; font-weight: 650; letter-spacing: -0.01em; }
+  .pcard .netlabel { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .pcard .note { font-size: 12.5px; color: var(--ink-2); margin-top: 12px; border-top: 1px solid var(--grid); padding-top: 10px; }
+
+  /* tooltip */
+  #tooltip {
+    position: fixed; z-index: 10; pointer-events: none; display: none;
+    background: var(--surface); color: var(--ink); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 11px; font-size: 13px; line-height: 1.45;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12); max-width: 260px;
+  }
+  #tooltip .t-val { font-weight: 650; font-variant-numeric: tabular-nums; }
+  #tooltip .t-key { display: inline-block; width: 12px; border-top: 3px solid; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+  #tooltip .t-sub { color: var(--muted); font-size: 12px; }
+
+  /* methodology */
+  .methodology { border-top: 1px solid var(--grid); margin-top: 64px; padding: 36px 0 60px; }
+  .methodology h2 { margin-top: 0; }
+  .methodology p, .methodology li { font-size: 14.5px; color: var(--ink-2); }
+  .methodology a { color: var(--gain); }
+  details { margin: 14px 0; }
+  summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--ink); }
+  table { border-collapse: collapse; margin: 12px 0; font-size: 13px; font-variant-numeric: tabular-nums; }
+  th, td { text-align: right; padding: 5px 12px; border-bottom: 1px solid var(--grid); color: var(--ink-2); }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; }
+  th:first-child, td:first-child { text-align: left; }
+  .table-scroll { overflow-x: auto; }
+  .asof { font-size: 12.5px; color: var(--muted); margin-top: 26px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .verdict .figure { transition: color 0.2s; }
+  }
+</style>
+
+<header class="masthead col">
+  <p class="eyebrow">Six months of the Iran war · Feb 27 – Aug 2026</p>
+  <h1>The War Tax</h1>
+  <p class="standfirst">
+    Since the strikes of February 27, the war has reached every American twice:
+    once at the pump, and once in their portfolio. Which one hit you harder
+    depends almost entirely on how much stock you owned when it started.
+  </p>
+</header>
+
+<section class="col" aria-label="Your war ledger">
+  <div class="controls-top">
+    <span class="control-label" id="persona-label">Whose ledger</span>
+    <div class="personas" role="group" aria-labelledby="persona-label">
+      <button type="button" data-persona="you" aria-pressed="true">You</button>
+      <button type="button" data-persona="median" aria-pressed="false">Median American</button>
+      <button type="button" data-persona="top1" aria-pressed="false">Top 1%</button>
+      <button type="button" data-persona="top01" aria-pressed="false">Top 0.1%</button>
+    </div>
+    <p class="persona-explainer" id="persona-explainer" aria-live="polite"></p>
+  </div>
+  <div class="controls">
+    <div class="slider-block">
+      <label class="control-label" for="invested">
+        In the market on Feb 27 (non-retirement) — <span class="slider-readout" id="invested-readout">$0</span>
+      </label>
+      <input type="range" id="invested" min="0" max="1000" step="1" value="0"
+             aria-label="Dollars you had invested in stocks on February 27, 2026">
+      <div class="slider-scale" id="slider-scale">
+        <span class="end" style="left:0">$0</span>
+        <span class="end" style="right:0">$100M</span>
+      </div>
+    </div>
+    <div>
+      <label class="control-label" for="state">Your state</label>
+      <select id="state" aria-label="Your state, used for gasoline prices"></select>
+    </div>
+    <div>
+      <label class="control-label" for="tax">Tax on gains</label>
+      <select id="tax" aria-label="Marginal tax rate applied to stock gains"></select>
+    </div>
+  </div>
+
+  <p class="verdict" id="verdict">
+    So far, the war has <span id="verdict-verb">cost</span> you
+    <span class="figure"><span class="dir bad" id="verdict-dir" aria-hidden="true">▼</span><span id="verdict-amount">$0</span></span>
+  </p>
+
+  <div class="card wide" style="padding-top:16px">
+    <svg id="waterfall" viewBox="0 0 880 380" role="img" aria-labelledby="wf-title">
+      <title id="wf-title">Waterfall chart: war costs versus after-tax stock gains</title>
+    </svg>
+  </div>
+  <p class="sub" id="breakeven-line"></p>
+
+  <div class="tiles" id="tiles"></div>
+</section>
+
+<section class="col" aria-label="How the rich made out">
+  <h2>The same war, three households</h2>
+  <p class="sub">
+    Average stock and mutual-fund holdings per household in each wealth group, from the
+    Federal Reserve's Distributional Financial Accounts — priced through this war.
+  </p>
+  <div class="persona-cards" id="persona-cards"></div>
+</section>
+
+<section class="col" aria-label="Gasoline">
+  <h2>Where the tax was collected: the pump</h2>
+  <p class="sub">
+    Gas prices normally drift up modestly into summer. Against that seasonal path —
+    the median of the last eleven years, projected from February's price — the war
+    added as much as <span id="gas-peak-excess"></span> per gallon at the peak in
+    <span id="gas-where">the US average</span>.
+  </p>
+  <div class="card wide">
+    <div class="legend" id="gas-legend">
+      <span><span class="key" style="border-color: var(--cost)"></span>Actual price</span>
+      <span><span class="key" style="border-color: var(--muted)"></span>No-war seasonal path</span>
+    </div>
+    <svg id="gaschart" viewBox="0 0 880 330" role="img" aria-labelledby="gas-title">
+      <title id="gas-title">Weekly US retail gasoline price in 2026, actual versus projected without the war</title>
+    </svg>
+    <p class="chart-note" id="gas-note"></p>
+  </div>
+</section>
+
+<section class="col" aria-label="Groceries">
+  <h2>The dog that didn't bark: groceries</h2>
+  <p class="sub" id="basket-sub"></p>
+  <div class="card wide">
+    <svg id="basket" viewBox="0 0 880 300" role="img" aria-labelledby="basket-title">
+      <title id="basket-title">Percent change in grocery prices, February to July 2026</title>
+    </svg>
+    <p class="chart-note">BLS average retail prices, US city average. Change from February to July 2026.</p>
+  </div>
+
+  <h3 class="diesel-head">…but watch diesel</h3>
+  <p class="sub" id="diesel-sub"></p>
+  <div class="card wide">
+    <div class="legend">
+      <span><span class="key" style="border-color: var(--cost)"></span>Actual diesel price</span>
+      <span><span class="key" style="border-color: var(--muted)"></span>No-war seasonal path</span>
+    </div>
+    <svg id="dieselchart" viewBox="0 0 880 300" role="img" aria-labelledby="diesel-title">
+      <title id="diesel-title">Weekly US on-highway diesel price in 2026, actual versus projected without the war</title>
+    </svg>
+    <p class="chart-note" id="diesel-note"></p>
+  </div>
+</section>
+
+<footer class="methodology">
+  <div class="col">
+    <h2>How this is calculated</h2>
+    <p>
+      <strong>Costs</strong> are counterfactual, not raw inflation: what an average American household actually
+      paid since February 27 minus what it would have paid had prewar patterns held.
+      Gasoline uses the EIA weekly retail price against a seasonal path — the median
+      week-by-week trajectory of 2015–2025, projected forward from the last prewar price —
+      times average household consumption (<span id="m-gallons"></span> gallons/month,
+      derived from BLS Consumer Expenditure Survey spending). Groceries and home energy
+      use seasonally adjusted CPI (food at home; electricity + piped gas) against each
+      category's own trailing-12-month prewar trend, applied to average household
+      spending. Categories that ran <em>below</em> trend count as negative cost — the
+      ledger is honest in both directions.
+    </p>
+    <p>
+      <strong>Gains</strong> are the S&amp;P 500's move since its February 27 close
+      (<span id="m-spbase"></span> → <span id="m-splatest"></span>,
+      <span id="m-spgain"></span>), applied to the amount you had invested, then taxed
+      as if realized today at short-term (ordinary income) rates — 22% by default, 35%
+      for the top 1%, 40.8% (37% + 3.8% NIIT) for the top 0.1% — so gains are after-tax,
+      like the costs. Wealth-group holdings are corporate equities and mutual-fund
+      shares per household from the Fed's Distributional Financial Accounts
+      (<span id="m-dfa"></span>) — a line that excludes pension and 401(k) holdings
+      (IRAs cannot be separated in this data) and also excludes private business
+      equity, so it understates the wealthy's total market exposure. The median
+      American's figure reflects the SCF finding that most families hold no stock
+      outside retirement accounts.
+    </p>
+    <details>
+      <summary>The data, month by month</summary>
+      <div id="data-tables"></div>
+    </details>
+    <p>
+      Sources:
+      <a href="https://www.eia.gov/petroleum/gasdiesel/">EIA weekly retail gasoline</a> ·
+      <a href="https://gasprices.aaa.com/">AAA national average</a> ·
+      <a href="https://www.bls.gov/cpi/">BLS CPI &amp; average prices</a> ·
+      <a href="https://www.bls.gov/cex/">BLS Consumer Expenditure Survey (2024)</a> ·
+      <a href="https://fred.stlouisfed.org/series/SP500">S&amp;P 500 via FRED</a> ·
+      <a href="https://www.federalreserve.gov/releases/z1/dataviz/dfa/">Fed Distributional Financial Accounts</a> ·
+      <a href="https://www.federalreserve.gov/publications/october-2023-changes-in-us-family-finances-from-2019-to-2022.htm">Fed Survey of Consumer Finances (2022)</a>
+    </p>
+    <p class="asof" id="asof"></p>
+  </div>
+</footer>
+
+<div id="tooltip" role="status"></div>
+
+<script>
+"use strict";
+const D = __DATA_JSON__;
+
+/* ── formatting ── */
+const fmtMoney = (v) => {
+  const a = Math.abs(v);
+  if (a >= 1e9) return "$" + (a / 1e9).toFixed(2) + "B";
+  if (a >= 1e6) return "$" + (a / 1e6).toFixed(1) + "M";
+  if (a >= 1e4) return "$" + Math.round(a).toLocaleString("en-US");
+  if (a >= 100) return "$" + Math.round(a).toLocaleString("en-US");
+  return "$" + a.toFixed(0);
+};
+const fmtSigned = (v) => (v < 0 ? "−" : "+") + fmtMoney(v);
+const fmtPct = (v, dp) => (v >= 0 ? "+" : "−") + Math.abs(v * 100).toFixed(dp == null ? 1 : dp) + "%";
+const fmtDate = (iso) => {
+  const [y, m, d] = iso.split("-").map(Number);
+  return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][m - 1] + " " + d;
+};
+const fmtMonth = (ym) => {
+  const [y, m] = ym.split("-").map(Number);
+  return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][m - 1] + " " + y;
+};
+
+/* ── state ── */
+const SLIDER_MAX_DOLLARS = 1e8, SLIDER_MIN_DOLLARS = 100, DECADES = 6;
+const sliderToDollars = (t) => (t <= 0 ? 0 : SLIDER_MIN_DOLLARS * Math.pow(10, DECADES * t / 1000));
+const dollarsToSlider = (v) => (v <= 0 ? 0 : Math.max(1, Math.min(1000, Math.round(1000 * Math.log10(v / SLIDER_MIN_DOLLARS) / DECADES))));
+
+const state = { invested: 0, tax: D.default_tax, persona: "you", stateCode: "" };
+const gainPct = D.market.gain_pct;
+
+const regionNow = () =>
+  D.gas_regions[state.stateCode ? D.states[state.stateCode].area : "NUS"];
+const costsNow = () => {
+  const gas = regionNow().total;
+  return { gas, food: D.costs.food, energy: D.costs.energy,
+           total: gas + D.costs.food + D.costs.energy };
+};
+const afterTaxGain = (invested, tax) => invested * gainPct * (1 - tax);
+const netOutcome = (invested, tax) => afterTaxGain(invested, tax) - costsNow().total;
+const breakevenAt = (tax) => costsNow().total / (gainPct * (1 - tax));
+
+/* ── tooltip ── */
+const tip = document.getElementById("tooltip");
+function showTip(evt, rows) {
+  tip.replaceChildren();
+  rows.forEach((r) => {
+    const line = document.createElement("div");
+    if (r.key) {
+      const k = document.createElement("span");
+      k.className = "t-key";
+      k.style.borderColor = r.key;
+      line.appendChild(k);
+    }
+    if (r.value != null) {
+      const v = document.createElement("span");
+      v.className = "t-val";
+      v.textContent = r.value + " ";
+      line.appendChild(v);
+    }
+    const l = document.createElement("span");
+    l.className = r.sub ? "t-sub" : "";
+    l.textContent = r.label || "";
+    line.appendChild(l);
+    tip.appendChild(line);
+  });
+  tip.style.display = "block";
+  moveTip(evt);
+}
+function moveTip(evt) {
+  const pad = 14;
+  let x = evt.clientX + pad, y = evt.clientY + pad;
+  const r = tip.getBoundingClientRect();
+  if (x + r.width > window.innerWidth - 8) x = evt.clientX - r.width - pad;
+  if (y + r.height > window.innerHeight - 8) y = evt.clientY - r.height - pad;
+  tip.style.left = x + "px";
+  tip.style.top = y + "px";
+}
+const hideTip = () => { tip.style.display = "none"; };
+
+/* ── svg helpers ── */
+const NS = "http://www.w3.org/2000/svg";
+function el(name, attrs, parent) {
+  const n = document.createElementNS(NS, name);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function txt(parent, x, y, s, cls, anchor) {
+  const t = el("text", { x, y, class: cls || "", "text-anchor": anchor || "start" }, parent);
+  t.textContent = s;
+  return t;
+}
+/* bar with 4px rounded data-end, square baseline */
+function barPath(x, w, yBase, yEnd) {
+  const r = Math.min(4, Math.abs(yBase - yEnd), w / 2);
+  if (Math.abs(yBase - yEnd) < 0.75) return `M${x},${yBase - 0.75}h${w}v1.5h${-w}Z`;
+  if (yEnd < yBase) // grows up
+    return `M${x},${yBase}V${yEnd + r}Q${x},${yEnd} ${x + r},${yEnd}H${x + w - r}Q${x + w},${yEnd} ${x + w},${yEnd + r}V${yBase}Z`;
+  return `M${x},${yBase}V${yEnd - r}Q${x},${yEnd} ${x + r},${yEnd}H${x + w - r}Q${x + w},${yEnd} ${x + w},${yEnd - r}V${yBase}Z`;
+}
+function niceTicks(lo, hi, n) {
+  const span = hi - lo, step0 = span / Math.max(1, n);
+  const mag = Math.pow(10, Math.floor(Math.log10(step0)));
+  const step = [1, 2, 2.5, 5, 10].map((m) => m * mag).find((s) => span / s <= n) || mag * 10;
+  const ticks = [];
+  for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) ticks.push(v);
+  return ticks;
+}
+
+/* ── waterfall ── */
+const wf = document.getElementById("waterfall");
+function renderWaterfall() {
+  while (wf.childNodes.length > 1) wf.removeChild(wf.lastChild); // keep <title>
+  const W = 880, H = 380, ml = 62, mr = 16, mt = 30, mb = 44;
+  const iw = W - ml - mr, ih = H - mt - mb;
+
+  const gain = afterTaxGain(state.invested, state.tax);
+  const gasWhy = state.stateCode
+    ? "extra paid at the pump in " + D.states[state.stateCode].name + " vs the no-war seasonal path"
+    : "extra paid at the pump vs the no-war seasonal path";
+  const steps = [
+    { label: "Gasoline", delta: -costsNow().gas, why: gasWhy },
+    { label: "Groceries", delta: -D.costs.food, why: "food-at-home prices vs their prewar trend" },
+    { label: "Home energy", delta: -D.costs.energy, why: "electricity and piped gas vs their prewar trends" },
+    { label: "Stock gains", delta: gain, why: "S&P 500 " + fmtPct(gainPct) + " on " + fmtMoney(state.invested) + ", after " + Math.round(state.tax * 1000) / 10 + "% tax" },
+  ];
+  let run = 0;
+  const bars = steps.map((s) => { const from = run; run += s.delta; return { ...s, from, to: run }; });
+  bars.push({ label: "Net", delta: run, from: 0, to: run, isNet: true,
+              why: run >= 0 ? "the war has paid you, net" : "the war has cost you, net" });
+
+  const values = bars.flatMap((b) => [b.from, b.to]).concat(0);
+  let lo = Math.min(...values), hi = Math.max(...values);
+  const pad = (hi - lo) * 0.14 || 50;
+  lo -= pad * 0.4; hi += pad;
+  const y = (v) => mt + (hi - v) / (hi - lo) * ih;
+
+  const g = el("g", {}, wf);
+  niceTicks(lo, hi, 5).forEach((v) => {
+    el("line", { x1: ml, x2: W - mr, y1: y(v), y2: y(v), class: v === 0 ? "baseline" : "gridline" }, g);
+    txt(g, ml - 8, y(v) + 4, (v < 0 ? "−" : "") + fmtMoney(Math.abs(v)), "tick-label", "end");
+  });
+
+  const slot = iw / bars.length, bw = 24;
+  bars.forEach((b, i) => {
+    const x = ml + slot * i + (slot - bw) / 2;
+    const isGain = b.delta >= 0;
+    const color = b.isNet ? (b.to >= 0 ? "var(--gain)" : "var(--cost)") : (isGain ? "var(--gain)" : "var(--cost)");
+    // connector from previous running total
+    if (i > 0 && !b.isNet) {
+      const prevX = ml + slot * (i - 1) + (slot - bw) / 2 + bw;
+      el("line", { x1: prevX, x2: x + bw, y1: y(b.from), y2: y(b.from), class: "gridline" }, g);
+    }
+    const base = b.isNet ? y(0) : y(b.from);
+    const end = y(b.to);
+    const p = el("path", { d: barPath(x, bw, base, end), fill: color, class: "wf-bar", tabindex: 0,
+                           role: "img", "aria-label": b.label + ": " + fmtSigned(b.delta) }, g);
+    const tipRows = [{ value: fmtSigned(b.isNet ? b.to : b.delta), label: b.label, key: color === "var(--gain)" ? getComputedStyle(document.documentElement).getPropertyValue("--gain") : getComputedStyle(document.documentElement).getPropertyValue("--cost") },
+                     { label: b.why, sub: true }];
+    p.addEventListener("pointermove", (e) => showTip(e, tipRows));
+    p.addEventListener("pointerleave", hideTip);
+    p.addEventListener("focus", (e) => { const r = p.getBoundingClientRect(); showTip({ clientX: r.x + r.width / 2, clientY: r.y }, tipRows); });
+    p.addEventListener("blur", hideTip);
+    // cap value label
+    const capY = Math.min(base, end) - 7;
+    txt(g, x + bw / 2, capY, fmtSigned(b.isNet ? b.to : b.delta), "val-label", "middle");
+    // category label
+    txt(g, x + bw / 2, H - mb + 20, b.label, "cat-label", "middle");
+    if (b.isNet) txt(g, x + bw / 2, H - mb + 36, "after tax", "tick-label", "middle");
+  });
+}
+
+/* ── actual-vs-counterfactual line pair (gas & diesel) ── */
+function renderPairChart(svg, S, endLabel) {
+  while (svg.childNodes.length > 1) svg.removeChild(svg.lastChild);
+  const W = 880, H = Number(svg.getAttribute("viewBox").split(" ")[3]),
+        ml = 46, mr = 120, mt = 18, mb = 34;
+  const iw = W - ml - mr, ih = H - mt - mb;
+  const xs = S.map((_, i) => ml + iw * i / (S.length - 1));
+  const allVals = S.flatMap((r) => [r.actual, r.counterfactual]);
+  const lo = Math.floor(Math.min(...allVals) * 4) / 4 - 0.1;
+  const hi = Math.ceil(Math.max(...allVals) * 4) / 4 + 0.15;
+  const y = (v) => mt + (hi - v) / (hi - lo) * ih;
+  const g = el("g", {}, svg);
+
+  niceTicks(lo, hi, 5).forEach((v) => {
+    el("line", { x1: ml, x2: W - mr, y1: y(v), y2: y(v), class: "gridline" }, g);
+    txt(g, ml - 8, y(v) + 4, "$" + v.toFixed(2), "tick-label", "end");
+  });
+  // x labels: ~monthly
+  const seen = new Set();
+  S.forEach((r, i) => {
+    const m = r.date.slice(0, 7);
+    if (!seen.has(m)) { seen.add(m); if (i > 0 || true) txt(g, xs[i], H - mb + 20, fmtDate(r.date).split(" ")[0], "tick-label", "middle"); }
+  });
+
+  // wash between curves (the war tax on gas)
+  const band = S.map((r, i) => xs[i] + "," + y(r.actual)).join(" ") + " " +
+               S.slice().reverse().map((r, i) => xs[S.length - 1 - i] + "," + y(r.counterfactual)).join(" ");
+  el("polygon", { points: band, fill: "var(--cost-wash)" }, g);
+
+  const linePath = (key) => S.map((r, i) => (i ? "L" : "M") + xs[i] + "," + y(r[key])).join("");
+  el("path", { d: linePath("counterfactual"), fill: "none", stroke: "var(--muted)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, g);
+  el("path", { d: linePath("actual"), fill: "none", stroke: "var(--cost)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, g);
+
+  // war-start marker
+  const warX = xs[0] + (xs[1] - xs[0]) * 0.55;
+  el("line", { x1: warX, x2: warX, y1: mt, y2: H - mb, class: "baseline" }, g);
+  txt(g, warX + 6, mt + 12, "War begins Feb 27", "anno");
+
+  // peak annotation
+  let peakI = 0;
+  S.forEach((r, i) => { if (r.actual > S[peakI].actual) peakI = i; });
+  el("circle", { cx: xs[peakI], cy: y(S[peakI].actual), r: 4.5, fill: "var(--cost)", stroke: "var(--surface)", "stroke-width": 2 }, g);
+  txt(g, xs[peakI], y(S[peakI].actual) - 12, "$" + S[peakI].actual.toFixed(2) + " · " + fmtDate(S[peakI].date), "anno", "middle");
+
+  // end markers + direct labels
+  const last = S[S.length - 1];
+  el("circle", { cx: xs[xs.length - 1], cy: y(last.actual), r: 4.5, fill: "var(--cost)", stroke: "var(--surface)", "stroke-width": 2 }, g);
+  el("circle", { cx: xs[xs.length - 1], cy: y(last.counterfactual), r: 4.5, fill: "var(--muted)", stroke: "var(--surface)", "stroke-width": 2 }, g);
+  txt(g, xs[xs.length - 1] + 10, y(last.actual) + 4, (endLabel || "Actual") + " $" + last.actual.toFixed(2), "val-label");
+  txt(g, xs[xs.length - 1] + 10, y(last.counterfactual) + 4, "No war $" + last.counterfactual.toFixed(2), "anno");
+
+  // crosshair + tooltip
+  const cross = el("line", { x1: 0, x2: 0, y1: mt, y2: H - mb, class: "baseline", opacity: 0 }, g);
+  const hit = el("rect", { x: ml, y: mt, width: iw, height: ih, fill: "transparent" }, g);
+  const costColor = () => getComputedStyle(document.documentElement).getPropertyValue("--cost");
+  const mutedColor = () => getComputedStyle(document.documentElement).getPropertyValue("--muted");
+  hit.addEventListener("pointermove", (e) => {
+    const rect = svg.getBoundingClientRect();
+    const px = (e.clientX - rect.left) * (W / rect.width);
+    let best = 0;
+    xs.forEach((x, i) => { if (Math.abs(x - px) < Math.abs(xs[best] - px)) best = i; });
+    cross.setAttribute("x1", xs[best]); cross.setAttribute("x2", xs[best]);
+    cross.setAttribute("opacity", 1);
+    const r = S[best];
+    showTip(e, [
+      { label: "Week of " + fmtDate(r.date) },
+      { value: "$" + r.actual.toFixed(2), label: "actual", key: costColor() },
+      { value: "$" + r.counterfactual.toFixed(2), label: "no-war path", key: mutedColor() },
+      { label: "war premium " + (r.actual - r.counterfactual >= 0 ? "+" : "−") + "$" + Math.abs(r.actual - r.counterfactual).toFixed(2) + "/gal", sub: true },
+    ]);
+  });
+  hit.addEventListener("pointerleave", () => { cross.setAttribute("opacity", 0); hideTip(); });
+}
+
+function renderGasChart() {
+  const region = regionNow();
+  renderPairChart(document.getElementById("gaschart"), region.series, "Actual");
+  let peakExcess = 0;
+  region.series.forEach((r) => { peakExcess = Math.max(peakExcess, r.actual - r.counterfactual); });
+  document.getElementById("gas-peak-excess").textContent = "$" + peakExcess.toFixed(2);
+  const sName = state.stateCode ? D.states[state.stateCode].name : null;
+  const where = sName
+    ? sName + (region.label !== sName ? " (" + region.label + " prices)" : "")
+    : "the US average";
+  const aaaState = state.stateCode ? D.states[state.stateCode].aaa : D.gas.aaa_latest;
+  document.getElementById("gas-where").textContent = where;
+  document.getElementById("gas-note").textContent =
+    "Showing " + region.label + ". Seasonal path: median week-by-week trajectory of 2015–2025, " +
+    "projected from the last prewar price ($" + region.baseline_price.toFixed(2) + ", week of " +
+    fmtDate(region.baseline_date) + ")." +
+    (aaaState ? " AAA " + (state.stateCode ? D.states[state.stateCode].name : "national") +
+                " average today: $" + aaaState.toFixed(2) + "." : "");
+}
+
+function renderDieselChart() {
+  renderPairChart(document.getElementById("dieselchart"), D.diesel.series, "Diesel");
+  document.getElementById("diesel-sub").textContent =
+    "Every grocery item travels by truck, and trucks burn diesel. Diesel is up " +
+    D.diesel.since_war_pct.toFixed(0) + "% since the war began — " + D.diesel.vs_cf_pct.toFixed(0) +
+    "% above its no-war seasonal path — but it hasn't reached grocery shelves yet: freight costs feed " +
+    "into food prices with a lag of months, and that pass-through hasn't happened yet. The longer the conflict keeps " +
+    "diesel elevated, the greater the risk the chart above stops being flat. We're tracking it.";
+  document.getElementById("diesel-note").textContent =
+    "US on-highway diesel, EIA weekly retail. Seasonal path: median 2015–2025 trajectory projected " +
+    "from the last prewar price ($" + D.diesel.baseline_price.toFixed(2) + ", week of " +
+    fmtDate(D.diesel.baseline_date) + ").";
+}
+
+/* ── grocery basket ── */
+function renderBasket() {
+  const svg = document.getElementById("basket");
+  const items = D.basket.filter((b) => b.feb != null).map((b) => ({
+    ...b, pct: (b.latest / b.feb - 1),
+  }));
+  const rowH = 40, mt = 26, mb = 10, ml = 150, mr = 150;
+  const W = 880, H = mt + mb + rowH * items.length;
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  while (svg.childNodes.length > 1) svg.removeChild(svg.lastChild);
+  const iw = W - ml - mr;
+  const maxAbs = Math.max(0.05, ...items.map((b) => Math.abs(b.pct))) * 1.15;
+  const x = (v) => ml + iw / 2 + (v / maxAbs) * (iw / 2);
+  const g = el("g", {}, svg);
+  el("line", { x1: x(0), x2: x(0), y1: mt - 12, y2: H - mb, class: "baseline" }, g);
+  txt(g, x(0), mt - 16, "no change", "tick-label", "middle");
+  items.forEach((b, i) => {
+    const cy = mt + rowH * i + rowH / 2;
+    const bw = 18;
+    const color = b.pct >= 0 ? "var(--cost)" : "var(--gain)";
+    const x0 = x(0), x1 = x(b.pct);
+    const r = Math.min(4, Math.abs(x1 - x0));
+    let d;
+    if (Math.abs(x1 - x0) < 1) d = `M${x0 - 0.75},${cy - bw / 2}h1.5v${bw}h-1.5Z`;
+    else if (x1 > x0) d = `M${x0},${cy - bw / 2}H${x1 - r}Q${x1},${cy - bw / 2} ${x1},${cy - bw / 2 + r}V${cy + bw / 2 - r}Q${x1},${cy + bw / 2} ${x1 - r},${cy + bw / 2}H${x0}Z`;
+    else d = `M${x0},${cy - bw / 2}H${x1 + r}Q${x1},${cy - bw / 2} ${x1},${cy - bw / 2 + r}V${cy + bw / 2 - r}Q${x1},${cy + bw / 2} ${x1 + r},${cy + bw / 2}H${x0}Z`;
+    const p = el("path", { d, fill: color, class: "wf-bar", tabindex: 0, role: "img",
+                           "aria-label": b.name + ": " + fmtPct(b.pct) }, g);
+    txt(g, 8, cy + 4, b.name, "cat-label", "start");
+    txt(g, x1 + (b.pct >= 0 ? 8 : -8), cy + 4, fmtPct(b.pct), "val-label", b.pct >= 0 ? "start" : "end");
+    const rows = [
+      { value: fmtPct(b.pct), label: b.name + " (" + b.unit + ")", key: getComputedStyle(document.documentElement).getPropertyValue(b.pct >= 0 ? "--cost" : "--gain") },
+      { label: "$" + b.feb.toFixed(2) + " in Feb → $" + b.latest.toFixed(2) + " in " + fmtMonth(b.latest_month), sub: true },
+    ];
+    p.addEventListener("pointermove", (e) => showTip(e, rows));
+    p.addEventListener("pointerleave", hideTip);
+    p.addEventListener("focus", () => { const rr = p.getBoundingClientRect(); showTip({ clientX: rr.x + rr.width / 2, clientY: rr.y }, rows); });
+    p.addEventListener("blur", hideTip);
+  });
+}
+
+/* ── tiles & persona cards (re-rendered on state/tax change) ── */
+function renderTiles() {
+  const c = costsNow();
+  const tiles = [
+    { label: "Extra paid at the pump", value: fmtMoney(c.gas),
+      hint: "per household since Feb 27, vs the seasonal norm" +
+            (state.stateCode ? " — " + regionNow().label : "") },
+    { label: "S&P 500 since Feb 27", value: fmtPct(gainPct), hint: D.market.base.toLocaleString("en-US") + " → " + D.market.latest.toLocaleString("en-US") },
+    { label: "Break-even investment", value: fmtMoney(breakevenAt(state.tax)), hint: "in stocks on Feb 27 fully covers your war tax" },
+  ];
+  const tilesEl = document.getElementById("tiles");
+  tilesEl.replaceChildren();
+  tiles.forEach((t) => {
+    const d = document.createElement("div"); d.className = "tile";
+    const l = document.createElement("div"); l.className = "label"; l.textContent = t.label;
+    const v = document.createElement("div"); v.className = "value"; v.textContent = t.value;
+    const h = document.createElement("div"); h.className = "hint"; h.textContent = t.hint;
+    d.append(l, v, h); tilesEl.appendChild(d);
+  });
+}
+
+function renderPersonaCards() {
+  const cards = document.getElementById("persona-cards");
+  cards.replaceChildren();
+  ["median", "top1", "top01"].forEach((k) => {
+    const p = D.personas[k];
+    const net = netOutcome(p.invested, p.tax);
+    const d = document.createElement("div"); d.className = "pcard";
+    const h = document.createElement("h3"); h.textContent = p.label;
+    const hold = document.createElement("div"); hold.className = "holding";
+    hold.textContent = fmtMoney(p.invested) + " in the market on Feb 27";
+    const n = document.createElement("div"); n.className = "net";
+    n.textContent = fmtSigned(net);
+    const nl = document.createElement("div"); nl.className = "netlabel";
+    nl.textContent = "net war outcome, after " + Math.round(p.tax * 1000) / 10 + "% tax";
+    const note = document.createElement("div"); note.className = "note"; note.textContent = p.note;
+    d.append(h, hold, n, nl, note);
+    cards.appendChild(d);
+  });
+}
+
+/* ── static text ── */
+function renderStatics() {
+  const worst = D.basket.reduce((a, b) => ((b.latest / b.feb - 1) > (a.latest / a.feb - 1) ? b : a));
+  const best = D.basket.reduce((a, b) => ((b.latest / b.feb - 1) < (a.latest / a.feb - 1) ? b : a));
+  document.getElementById("basket-sub").textContent =
+    "Food at home has run " + fmtPct(D.food.since_feb_pct / 100) + " since February — " +
+    (D.costs.food <= 0 ? "below" : "slightly above") + " its prewar trend of +" +
+    D.food.prewar_annual_trend_pct.toFixed(1) + "%/yr. The war tax, so far, is a gasoline tax: the price of " +
+    best.name.toLowerCase() + " has actually fallen " + Math.abs((best.latest / best.feb - 1) * 100).toFixed(0) + "% since the war began.";
+
+  // methodology fills
+  document.getElementById("m-gallons").textContent = D.gas.gallons_per_month;
+  document.getElementById("m-spbase").textContent = D.market.base.toLocaleString("en-US");
+  document.getElementById("m-splatest").textContent = D.market.latest.toLocaleString("en-US");
+  document.getElementById("m-spgain").textContent = fmtPct(gainPct);
+  document.getElementById("m-dfa").textContent = D.dfa_quarter;
+  document.getElementById("asof").textContent =
+    "Data through " + fmtDate(D.gas.latest_date) + ", 2026 (gasoline) · " + fmtMonth(D.food.latest_month) +
+    " (CPI) · " + fmtDate(D.market.latest_date) + ", 2026 close (S&P 500) · DFA " + D.dfa_quarter +
+    " · page generated " + fmtDate(D.generated) + ", 2026.";
+
+  // data tables
+  const tablesEl = document.getElementById("data-tables");
+  tablesEl.replaceChildren();
+  const mkTable = (title, headers, rows) => {
+    const wrap = document.createElement("div"); wrap.className = "table-scroll";
+    const cap = document.createElement("p"); cap.textContent = title; cap.style.fontWeight = "600";
+    const t = document.createElement("table");
+    const trh = document.createElement("tr");
+    headers.forEach((h) => { const th = document.createElement("th"); th.textContent = h; trh.appendChild(th); });
+    t.appendChild(trh);
+    rows.forEach((r) => {
+      const tr = document.createElement("tr");
+      r.forEach((c) => { const td = document.createElement("td"); td.textContent = c; tr.appendChild(td); });
+      t.appendChild(tr);
+    });
+    wrap.append(cap, t); tablesEl.appendChild(wrap);
+  };
+  mkTable("Weekly gasoline: actual vs no-war path ($/gal)", ["Week of", "Actual", "No-war", "Premium"],
+    D.gas.series.map((r) => [fmtDate(r.date), "$" + r.actual.toFixed(2), "$" + r.counterfactual.toFixed(2),
+                             (r.actual - r.counterfactual >= 0 ? "+" : "−") + "$" + Math.abs(r.actual - r.counterfactual).toFixed(2)]));
+  const cpiRows = (c) => c.series.map((r) => [fmtMonth(r.month), r.index.toFixed(1), r.counterfactual.toFixed(1), r.excess_pct.toFixed(2) + "%", (r.cost < 0 ? "−$" : "$") + Math.abs(r.cost).toFixed(2)]);
+  mkTable("Food at home: CPI (seasonally adj.) vs prewar trend", ["Month", "CPI", "Trend path", "Excess", "Cost/household"], cpiRows(D.food));
+  mkTable("Electricity: CPI vs prewar trend", ["Month", "CPI", "Trend path", "Excess", "Cost/household"], cpiRows(D.electricity));
+  mkTable("Piped gas: CPI vs prewar trend", ["Month", "CPI", "Trend path", "Excess", "Cost/household"], cpiRows(D.utility_gas));
+  mkTable("Grocery basket: BLS average prices", ["Item", "Feb 2026", "Jul 2026", "Change"],
+    D.basket.map((b) => [b.name + " (" + b.unit + ")", "$" + b.feb.toFixed(2), "$" + b.latest.toFixed(2), fmtPct(b.latest / b.feb - 1)]));
+}
+
+/* ── dynamic (slider/persona) ── */
+function renderDynamic() {
+  const net = netOutcome(state.invested, state.tax);
+  document.getElementById("invested-readout").textContent = fmtMoney(state.invested);
+  document.getElementById("verdict-verb").textContent = net >= 0 ? "made" : "cost";
+  document.getElementById("verdict-amount").textContent = fmtMoney(Math.abs(net));
+  const dir = document.getElementById("verdict-dir");
+  dir.textContent = net >= 0 ? "▲" : "▼";
+  dir.className = "dir " + (net >= 0 ? "good" : "bad");
+
+  const be = breakevenAt(state.tax);
+  document.getElementById("breakeven-line").textContent =
+    "Break-even: with " + fmtMoney(be) + " invested on Feb 27, after-tax market gains exactly cover the " +
+    fmtMoney(costsNow().total) + " war tax" +
+    (state.stateCode ? " (gas priced for " + D.states[state.stateCode].name + ")" : "") +
+    ". Everything above that, the war has paid you.";
+
+  // breakeven tick on slider scale
+  const scale = document.getElementById("slider-scale");
+  let tick = document.getElementById("breakeven-tick");
+  if (!tick) {
+    tick = document.createElement("span");
+    tick.id = "breakeven-tick"; tick.className = "breakeven-tick";
+    scale.appendChild(tick);
+  }
+  tick.style.left = (dollarsToSlider(be) / 10) + "%";
+  tick.textContent = "break-even " + fmtMoney(be);
+
+  renderWaterfall();
+  renderTiles();
+  renderPersonaCards();
+}
+
+/* ── wiring ── */
+const slider = document.getElementById("invested");
+slider.addEventListener("input", () => {
+  state.invested = sliderToDollars(Number(slider.value));
+  setPersona("you", false);
+  renderDynamic();
+});
+
+const taxSel = document.getElementById("tax");
+[[0.12, "12%"], [0.22, "22% (typical)"], [0.24, "24%"], [0.32, "32%"], [0.35, "35%"], [0.408, "40.8% (top + NIIT)"]]
+  .forEach(([v, l]) => {
+    const o = document.createElement("option");
+    o.value = v; o.textContent = l;
+    taxSel.appendChild(o);
+  });
+taxSel.value = String(D.default_tax);
+taxSel.addEventListener("change", () => { state.tax = Number(taxSel.value); renderDynamic(); });
+
+const stateSel = document.getElementById("state");
+{
+  const o = document.createElement("option");
+  o.value = ""; o.textContent = "US average";
+  stateSel.appendChild(o);
+  Object.entries(D.states)
+    .sort((a, b) => a[1].name.localeCompare(b[1].name))
+    .forEach(([code, s]) => {
+      const opt = document.createElement("option");
+      opt.value = code; opt.textContent = s.name;
+      stateSel.appendChild(opt);
+    });
+}
+stateSel.addEventListener("change", () => {
+  state.stateCode = stateSel.value;
+  renderGasChart();
+  renderDynamic();
+  document.getElementById("persona-explainer").textContent = explainerFor(state.persona);
+});
+
+function explainerFor(key) {
+  if (key === "you")
+    return "How much non-retirement money did you have in the stock market on Feb 27? " +
+           "Enter it below — retirement accounts don't count, since you can't tap them now.";
+  if (key === "median")
+    return "Why $0? Most American families own no stock outside retirement accounts. In the Fed's " +
+           "Survey of Consumer Finances, only 21% of families hold any stock directly — and even among " +
+           "those who do, the median holding is $15,000. So the typical household paid the war's costs " +
+           "and collected none of its market gains.";
+  const p = D.personas[key];
+  const gains = p.invested * gainPct;
+  const tril = "$" + (p.group_equities_usd / 1e12).toFixed(1) + " trillion";
+  if (key === "top1")
+    return "The Fed counts " + tril + " in stocks and mutual funds held by the top 1% of households (" +
+           D.dfa_quarter + ") — about " + fmtMoney(p.invested) + " for each of its " +
+           (p.group_households / 1e6).toFixed(2) + " million households. The market's " + fmtPct(gainPct) +
+           " rise since Feb 27 works out to roughly " + fmtMoney(gains) +
+           " per household before tax, taxed here at 35%.";
+  return "The top 0.1% — about " + Math.round(p.group_households / 1000) + ",000 households — hold " +
+         tril + " in stocks and mutual funds, roughly " + fmtMoney(p.invested) + " each. The market's " +
+         fmtPct(gainPct) + " rise since Feb 27 is about " + fmtMoney(gains) +
+         " per household before tax; even at the top 40.8% rate, the " + fmtMoney(costsNow().total) +
+         " war tax disappears next to it.";
+}
+
+function setPersona(key, apply) {
+  state.persona = key;
+  document.querySelectorAll(".personas button").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.persona === key)));
+  document.getElementById("persona-explainer").textContent = explainerFor(key);
+  if (apply && key !== "you") {
+    const p = D.personas[key];
+    state.invested = p.invested;
+    state.tax = p.tax;
+    slider.value = dollarsToSlider(p.invested);
+    taxSel.value = String(p.tax);
+    renderDynamic();
+  }
+}
+document.querySelectorAll(".personas button").forEach((b) =>
+  b.addEventListener("click", () => { setPersona(b.dataset.persona, true); if (b.dataset.persona === "you") renderDynamic(); }));
+
+/* ── boot ── */
+setPersona("you", false);
+renderStatics();
+renderGasChart();
+renderDieselChart();
+renderBasket();
+renderDynamic();
+window.addEventListener("resize", () => { /* svg is viewBox-scaled; nothing to do */ });
+</script>
