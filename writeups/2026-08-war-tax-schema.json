@@ -3,8 +3,8 @@
   "@graph": [
     {
       "@type": "Article",
-      "headline": "The War Tax, Updated: Six Months In",
-      "description": "An interactive tool computes your personal War Tax from the 2026 Iran war — extra gasoline, grocery, and home energy costs versus after-tax S&P 500 gains — and compares your ledger to the median American, the top 1%, and the top 0.1%.",
+      "headline": "What has the war cost you? We did the math.",
+      "description": "Gas, groceries, and the S&P 500, 24 weeks in. Our new interactive tool computes your personal War Tax.",
       "image": "[[PRISMIC HERO URL]]?auto=format,compress",
       "datePublished": "2026-08-14T09:00:00-04:00",
       "dateModified": "2026-08-14T09:00:00-04:00",
