@@ -55,7 +55,10 @@ Publish `site/index.html` with the Artifact tool, targeting the existing artifac
 - favicon: ⛽ (keep stable)
 - label: `refresh-<gas.latest_date>`
 
-## 6. Remind the user of the one manual step
+## 6. Confirm the live embed updated
 
-Re-upload `site/embed.html` to wherever Prismic pulls the embed from — the iframe
-does not update itself.
+The Prismic iframe points at GitHub Pages
+(https://data4thepeople.github.io/WarTaxViz/site/embed.html), so the push in step 4
+updates it automatically. Pages deploys take a minute or two; verify with a curl
+that the live embed.html reflects the new data (e.g. grep for the new gas
+latest_date), and tell the user it's live. No manual upload needed.
