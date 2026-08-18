@@ -1,14 +1,14 @@
 {
  "war_start": "2026-02-27",
- "generated": "2026-08-14",
+ "generated": "2026-08-18",
  "costs": {
-  "gas": 265.69,
+  "gas": 277.71,
   "food": -4.1,
   "energy": 3.05,
-  "total": 264.65
+  "total": 276.67
  },
  "gas": {
-  "total": 265.6929777715054,
+  "total": 277.7114089732391,
   "series": [
    {
     "date": "2026-02-23",
@@ -134,21 +134,26 @@
     "date": "2026-08-10",
     "actual": 4.006,
     "counterfactual": 3.225
+   },
+   {
+    "date": "2026-08-17",
+    "actual": 4.049,
+    "counterfactual": 3.193
    }
   ],
   "baseline_date": "2026-02-23",
   "baseline_price": 2.937,
-  "latest_date": "2026-08-10",
-  "latest_price": 4.006,
+  "latest_date": "2026-08-17",
+  "latest_price": 4.049,
   "peak_date": "2026-05-11",
   "peak_price": 4.5,
   "gallons_per_month": 60.8,
-  "aaa_latest": 4.0776,
+  "aaa_latest": 4.0654,
   "source": "EIA API v2 (EMM_EPMR_PTE_NUS_DPG)"
  },
  "gas_regions": {
   "NUS": {
-   "total": 265.6929777715054,
+   "total": 277.7114089732391,
    "series": [
     {
      "date": "2026-02-23",
@@ -274,21 +279,26 @@
      "date": "2026-08-10",
      "actual": 4.006,
      "counterfactual": 3.225
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 4.049,
+     "counterfactual": 3.193
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.937,
-   "latest_date": "2026-08-10",
-   "latest_price": 4.006,
+   "latest_date": "2026-08-17",
+   "latest_price": 4.049,
    "peak_date": "2026-05-11",
    "peak_price": 4.5,
    "gallons_per_month": 60.8,
-   "aaa_latest": 4.0776,
+   "aaa_latest": 4.0654,
    "source": "EIA API v2 (EMM_EPMR_PTE_NUS_DPG)",
    "label": "US average"
   },
   "R1X": {
-   "total": 288.3967682733575,
+   "total": 299.3938348506219,
    "series": [
     {
      "date": "2026-02-23",
@@ -414,18 +424,23 @@
      "date": "2026-08-10",
      "actual": 3.975,
      "counterfactual": 3.188
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 3.946,
+     "counterfactual": 3.162
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.852,
-   "latest_date": "2026-08-10",
-   "latest_price": 3.975,
+   "latest_date": "2026-08-17",
+   "latest_price": 3.946,
    "peak_date": "2026-05-18",
    "peak_price": 4.489,
    "label": "New England (PADD 1A)"
   },
   "R1Y": {
-   "total": 284.0180994742002,
+   "total": 295.4496182990902,
    "series": [
     {
      "date": "2026-02-23",
@@ -551,18 +566,23 @@
      "date": "2026-08-10",
      "actual": 4.06,
      "counterfactual": 3.259
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 4.038,
+     "counterfactual": 3.223
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.962,
-   "latest_date": "2026-08-10",
-   "latest_price": 4.06,
+   "latest_date": "2026-08-17",
+   "latest_price": 4.038,
    "peak_date": "2026-05-11",
    "peak_price": 4.534,
    "label": "Central Atlantic (PADD 1B)"
   },
   "R1Z": {
-   "total": 263.67318637900496,
+   "total": 275.4084520200248,
    "series": [
     {
      "date": "2026-02-23",
@@ -688,18 +708,23 @@
      "date": "2026-08-10",
      "actual": 3.749,
      "counterfactual": 2.938
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 3.73,
+     "counterfactual": 2.894
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.748,
-   "latest_date": "2026-08-10",
-   "latest_price": 3.749,
+   "latest_date": "2026-08-17",
+   "latest_price": 3.73,
    "peak_date": "2026-05-11",
    "peak_price": 4.176,
    "label": "Lower Atlantic (PADD 1C)"
   },
   "R20": {
-   "total": 290.7992265196022,
+   "total": 305.08889857295816,
    "series": [
     {
      "date": "2026-02-23",
@@ -825,18 +850,23 @@
      "date": "2026-08-10",
      "actual": 3.816,
      "counterfactual": 2.926
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 3.938,
+     "counterfactual": 2.92
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.675,
-   "latest_date": "2026-08-10",
-   "latest_price": 3.816,
+   "latest_date": "2026-08-17",
+   "latest_price": 3.938,
    "peak_date": "2026-05-11",
    "peak_price": 4.405,
    "label": "Midwest (PADD 2)"
   },
   "R30": {
-   "total": 255.86429651412294,
+   "total": 268.5376940137843,
    "series": [
     {
      "date": "2026-02-23",
@@ -962,18 +992,23 @@
      "date": "2026-08-10",
      "actual": 3.543,
      "counterfactual": 2.785
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 3.622,
+     "counterfactual": 2.719
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.532,
-   "latest_date": "2026-08-10",
-   "latest_price": 3.543,
+   "latest_date": "2026-08-17",
+   "latest_price": 3.622,
    "peak_date": "2026-05-25",
    "peak_price": 3.989,
    "label": "Gulf Coast (PADD 3)"
   },
   "R40": {
-   "total": 289.57398601415053,
+   "total": 304.60212841488095,
    "series": [
     {
      "date": "2026-02-23",
@@ -1099,18 +1134,23 @@
      "date": "2026-08-10",
      "actual": 4.121,
      "counterfactual": 3.194
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 4.285,
+     "counterfactual": 3.214
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.662,
-   "latest_date": "2026-08-10",
-   "latest_price": 4.121,
+   "latest_date": "2026-08-17",
+   "latest_price": 4.285,
    "peak_date": "2026-05-18",
    "peak_price": 4.587,
    "label": "Rocky Mountain (PADD 4)"
   },
   "R50": {
-   "total": 236.908883369645,
+   "total": 244.53542654426082,
    "series": [
     {
      "date": "2026-02-23",
@@ -1236,18 +1276,23 @@
      "date": "2026-08-10",
      "actual": 5.075,
      "counterfactual": 4.566
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 5.086,
+     "counterfactual": 4.543
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 4.111,
-   "latest_date": "2026-08-10",
-   "latest_price": 5.075,
+   "latest_date": "2026-08-17",
+   "latest_price": 5.086,
    "peak_date": "2026-05-11",
    "peak_price": 5.613,
    "label": "West Coast (PADD 5)"
   },
   "SCA": {
-   "total": 262.20605857000595,
+   "total": 270.16115289303195,
    "series": [
     {
      "date": "2026-02-23",
@@ -1373,18 +1418,23 @@
      "date": "2026-08-10",
      "actual": 5.428,
      "counterfactual": 4.824
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 5.397,
+     "counterfactual": 4.83
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 4.441,
-   "latest_date": "2026-08-10",
-   "latest_price": 5.428,
+   "latest_date": "2026-08-17",
+   "latest_price": 5.397,
    "peak_date": "2026-05-11",
    "peak_price": 5.969,
    "label": "California"
   },
   "SCO": {
-   "total": 336.5403477225923,
+   "total": 354.5703941803796,
    "series": [
     {
      "date": "2026-02-23",
@@ -1510,18 +1560,23 @@
      "date": "2026-08-10",
      "actual": 4.046,
      "counterfactual": 2.95
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 4.255,
+     "counterfactual": 2.97
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.578,
-   "latest_date": "2026-08-10",
-   "latest_price": 4.046,
+   "latest_date": "2026-08-17",
+   "latest_price": 4.255,
    "peak_date": "2026-05-18",
    "peak_price": 4.618,
    "label": "Colorado"
   },
   "SFL": {
-   "total": 269.9906269740852,
+   "total": 282.43522602922985,
    "series": [
     {
      "date": "2026-02-23",
@@ -1647,18 +1702,23 @@
      "date": "2026-08-10",
      "actual": 3.792,
      "counterfactual": 2.9
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 3.768,
+     "counterfactual": 2.881
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.819,
-   "latest_date": "2026-08-10",
-   "latest_price": 3.792,
+   "latest_date": "2026-08-17",
+   "latest_price": 3.768,
    "peak_date": "2026-05-11",
    "peak_price": 4.305,
    "label": "Florida"
   },
   "SMA": {
-   "total": 278.6793250836242,
+   "total": 289.3561004470714,
    "series": [
     {
      "date": "2026-02-23",
@@ -1784,18 +1844,23 @@
      "date": "2026-08-10",
      "actual": 3.964,
      "counterfactual": 3.209
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 3.95,
+     "counterfactual": 3.189
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.845,
-   "latest_date": "2026-08-10",
-   "latest_price": 3.964,
+   "latest_date": "2026-08-17",
+   "latest_price": 3.95,
    "peak_date": "2026-05-18",
    "peak_price": 4.448,
    "label": "Massachusetts"
   },
   "SMN": {
-   "total": 297.95915246553693,
+   "total": 312.3788742097911,
    "series": [
     {
      "date": "2026-02-23",
@@ -1921,18 +1986,23 @@
      "date": "2026-08-10",
      "actual": 3.838,
      "counterfactual": 2.949
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 3.948,
+     "counterfactual": 2.92
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.661,
-   "latest_date": "2026-08-10",
-   "latest_price": 3.838,
+   "latest_date": "2026-08-17",
+   "latest_price": 3.948,
    "peak_date": "2026-05-18",
    "peak_price": 4.344,
    "label": "Minnesota"
   },
   "SNY": {
-   "total": 295.915861988719,
+   "total": 308.0163455900345,
    "series": [
     {
      "date": "2026-02-23",
@@ -2058,18 +2128,23 @@
      "date": "2026-08-10",
      "actual": 4.044,
      "counterfactual": 3.215
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 4.042,
+     "counterfactual": 3.18
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.889,
-   "latest_date": "2026-08-10",
-   "latest_price": 4.044,
+   "latest_date": "2026-08-17",
+   "latest_price": 4.042,
    "peak_date": "2026-05-18",
    "peak_price": 4.522,
    "label": "New York"
   },
   "SOH": {
-   "total": 249.08482369186504,
+   "total": 263.90175567094946,
    "series": [
     {
      "date": "2026-02-23",
@@ -2195,18 +2270,23 @@
      "date": "2026-08-10",
      "actual": 3.899,
      "counterfactual": 3.1
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 4.18,
+     "counterfactual": 3.124
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.887,
-   "latest_date": "2026-08-10",
-   "latest_price": 3.899,
+   "latest_date": "2026-08-17",
+   "latest_price": 4.18,
    "peak_date": "2026-05-04",
    "peak_price": 4.776,
    "label": "Ohio"
   },
   "STX": {
-   "total": 237.05662344020908,
+   "total": 249.27899210054122,
    "series": [
     {
      "date": "2026-02-23",
@@ -2332,18 +2412,23 @@
      "date": "2026-08-10",
      "actual": 3.513,
      "counterfactual": 2.818
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 3.619,
+     "counterfactual": 2.748
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 2.534,
-   "latest_date": "2026-08-10",
-   "latest_price": 3.513,
+   "latest_date": "2026-08-17",
+   "latest_price": 3.619,
    "peak_date": "2026-05-25",
    "peak_price": 3.956,
    "label": "Texas"
   },
   "SWA": {
-   "total": 156.31227022290435,
+   "total": 162.72183908650948,
    "series": [
     {
      "date": "2026-02-23",
@@ -2469,12 +2554,17 @@
      "date": "2026-08-10",
      "actual": 5.056,
      "counterfactual": 4.676
+    },
+    {
+     "date": "2026-08-17",
+     "actual": 5.121,
+     "counterfactual": 4.664
     }
    ],
    "baseline_date": "2026-02-23",
    "baseline_price": 4.143,
-   "latest_date": "2026-08-10",
-   "latest_price": 5.056,
+   "latest_date": "2026-08-17",
+   "latest_price": 5.121,
    "peak_date": "2026-05-11",
    "peak_price": 5.595,
    "label": "Washington"
@@ -2484,257 +2574,257 @@
   "AK": {
    "name": "Alaska",
    "area": "R50",
-   "aaa": 4.823
+   "aaa": 4.8312
   },
   "AL": {
    "name": "Alabama",
    "area": "R30",
-   "aaa": 3.612
+   "aaa": 3.6352
   },
   "AR": {
    "name": "Arkansas",
    "area": "R30",
-   "aaa": 3.7257
+   "aaa": 3.7036
   },
   "AZ": {
    "name": "Arizona",
    "area": "R50",
-   "aaa": 4.4032
+   "aaa": 4.4397
   },
   "CA": {
    "name": "California",
    "area": "SCA",
-   "aaa": 5.5766
+   "aaa": 5.5704
   },
   "CO": {
    "name": "Colorado",
    "area": "SCO",
-   "aaa": 4.3162
+   "aaa": 4.3376
   },
   "CT": {
    "name": "Connecticut",
    "area": "R1X",
-   "aaa": 4.0789
+   "aaa": 4.0655
   },
   "DC": {
    "name": "District of Columbia",
    "area": "R1Y",
-   "aaa": 4.2077
+   "aaa": 4.2017
   },
   "DE": {
    "name": "Delaware",
    "area": "R1Y",
-   "aaa": 3.9244
+   "aaa": 3.8681
   },
   "FL": {
    "name": "Florida",
    "area": "SFL",
-   "aaa": 3.9256
+   "aaa": 3.9193
   },
   "GA": {
    "name": "Georgia",
    "area": "R1Z",
-   "aaa": 3.8101
+   "aaa": 3.7919
   },
   "HI": {
    "name": "Hawaii",
    "area": "R50",
-   "aaa": 5.4357
+   "aaa": 5.4192
   },
   "IA": {
    "name": "Iowa",
    "area": "R20",
-   "aaa": 3.9487
+   "aaa": 4.0723
   },
   "ID": {
    "name": "Idaho",
    "area": "R40",
-   "aaa": 4.4197
+   "aaa": 4.4673
   },
   "IL": {
    "name": "Illinois",
    "area": "R20",
-   "aaa": 4.3277
+   "aaa": 4.3021
   },
   "IN": {
    "name": "Indiana",
    "area": "R20",
-   "aaa": 3.6077
+   "aaa": 3.5722
   },
   "KS": {
    "name": "Kansas",
    "area": "R20",
-   "aaa": 3.8197
+   "aaa": 3.8261
   },
   "KY": {
    "name": "Kentucky",
    "area": "R20",
-   "aaa": 3.7343
+   "aaa": 3.6813
   },
   "LA": {
    "name": "Louisiana",
    "area": "R30",
-   "aaa": 3.5775
+   "aaa": 3.5767
   },
   "MA": {
    "name": "Massachusetts",
    "area": "SMA",
-   "aaa": 4.0239
+   "aaa": 4.0159
   },
   "MD": {
    "name": "Maryland",
    "area": "R1Y",
-   "aaa": 3.9715
+   "aaa": 3.9221
   },
   "ME": {
    "name": "Maine",
    "area": "R1X",
-   "aaa": 4.0151
+   "aaa": 3.9909
   },
   "MI": {
    "name": "Michigan",
    "area": "R20",
-   "aaa": 4.2831
+   "aaa": 4.2253
   },
   "MN": {
    "name": "Minnesota",
    "area": "SMN",
-   "aaa": 3.9578
+   "aaa": 4.0851
   },
   "MO": {
    "name": "Missouri",
    "area": "R20",
-   "aaa": 3.8143
+   "aaa": 3.8057
   },
   "MS": {
    "name": "Mississippi",
    "area": "R30",
-   "aaa": 3.6179
+   "aaa": 3.6124
   },
   "MT": {
    "name": "Montana",
    "area": "R40",
-   "aaa": 4.3187
+   "aaa": 4.3424
   },
   "NC": {
    "name": "North Carolina",
    "area": "R1Z",
-   "aaa": 3.7212
+   "aaa": 3.6955
   },
   "ND": {
    "name": "North Dakota",
    "area": "R20",
-   "aaa": 3.9322
+   "aaa": 3.9715
   },
   "NE": {
    "name": "Nebraska",
    "area": "R20",
-   "aaa": 3.9832
+   "aaa": 3.9819
   },
   "NH": {
    "name": "New Hampshire",
    "area": "R1X",
-   "aaa": 3.9696
+   "aaa": 3.96
   },
   "NJ": {
    "name": "New Jersey",
    "area": "R1Y",
-   "aaa": 3.9821
+   "aaa": 3.9654
   },
   "NM": {
    "name": "New Mexico",
    "area": "R30",
-   "aaa": 3.9971
+   "aaa": 3.9776
   },
   "NV": {
    "name": "Nevada",
    "area": "R50",
-   "aaa": 4.7693
+   "aaa": 4.7666
   },
   "NY": {
    "name": "New York",
    "area": "SNY",
-   "aaa": 4.1425
+   "aaa": 4.1297
   },
   "OH": {
    "name": "Ohio",
    "area": "SOH",
-   "aaa": 4.2712
+   "aaa": 4.1744
   },
   "OK": {
    "name": "Oklahoma",
    "area": "R20",
-   "aaa": 3.7458
+   "aaa": 3.7627
   },
   "OR": {
    "name": "Oregon",
    "area": "R50",
-   "aaa": 4.7096
+   "aaa": 4.7185
   },
   "PA": {
    "name": "Pennsylvania",
    "area": "R1Y",
-   "aaa": 4.0862
+   "aaa": 4.073
   },
   "RI": {
    "name": "Rhode Island",
    "area": "R1X",
-   "aaa": 3.9613
+   "aaa": 3.9509
   },
   "SC": {
    "name": "South Carolina",
    "area": "R1Z",
-   "aaa": 3.6531
+   "aaa": 3.609
   },
   "SD": {
    "name": "South Dakota",
    "area": "R20",
-   "aaa": 4.0247
+   "aaa": 4.0422
   },
   "TN": {
    "name": "Tennessee",
    "area": "R20",
-   "aaa": 3.6705
+   "aaa": 3.6429
   },
   "TX": {
    "name": "Texas",
    "area": "STX",
-   "aaa": 3.6564
+   "aaa": 3.6207
   },
   "UT": {
    "name": "Utah",
    "area": "R40",
-   "aaa": 4.3161
+   "aaa": 4.3629
   },
   "VA": {
    "name": "Virginia",
    "area": "R1Z",
-   "aaa": 3.7875
+   "aaa": 3.7608
   },
   "VT": {
    "name": "Vermont",
    "area": "R1X",
-   "aaa": 4.1203
+   "aaa": 4.1065
   },
   "WA": {
    "name": "Washington",
    "area": "SWA",
-   "aaa": 5.176
+   "aaa": 5.203
   },
   "WI": {
    "name": "Wisconsin",
    "area": "R20",
-   "aaa": 3.9168
+   "aaa": 3.8953
   },
   "WV": {
    "name": "West Virginia",
    "area": "R1Z",
-   "aaa": 3.8795
+   "aaa": 3.8729
   },
   "WY": {
    "name": "Wyoming",
    "area": "R40",
-   "aaa": 4.2454
+   "aaa": 4.2995
   }
  },
  "diesel": {
@@ -2863,16 +2953,21 @@
     "date": "2026-08-10",
     "actual": 5.257,
     "counterfactual": 3.868
+   },
+   {
+    "date": "2026-08-17",
+    "actual": 5.454,
+    "counterfactual": 3.837
    }
   ],
   "baseline_date": "2026-02-23",
   "baseline_price": 3.809,
-  "latest_date": "2026-08-10",
-  "latest_price": 5.257,
+  "latest_date": "2026-08-17",
+  "latest_price": 5.454,
   "peak_date": "2026-04-06",
   "peak_price": 5.643,
-  "since_war_pct": 38.0,
-  "vs_cf_pct": 35.9
+  "since_war_pct": 43.2,
+  "vs_cf_pct": 42.1
  },
  "food": {
   "total": -4.098402805769544,
@@ -3009,9 +3104,9 @@
  "market": {
   "base_date": "2026-02-27",
   "base": 6878.88,
-  "latest_date": "2026-08-13",
-  "latest": 7798.99,
-  "gain_pct": 0.13375869327564938,
+  "latest_date": "2026-08-17",
+  "latest": 7745.06,
+  "gain_pct": 0.12591875421580268,
   "series": [
    {
     "date": "2026-02-20",
@@ -3496,6 +3591,14 @@
    {
     "date": "2026-08-13",
     "close": 7798.99
+   },
+   {
+    "date": "2026-08-14",
+    "close": 7785.76
+   },
+   {
+    "date": "2026-08-17",
+    "close": 7745.06
    }
   ]
  },

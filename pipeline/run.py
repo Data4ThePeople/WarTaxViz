@@ -52,14 +52,27 @@ def main():
     print("Fetching weekly gasoline...")
     gas_weekly, gas_source = get_gas_weekly()
 
+    # Previous build, used to carry regional data forward if EIA is unreachable.
+    prev_data = None
+    prev_path = os.path.join(ROOT, "site", "data.json")
+    if os.path.exists(prev_path):
+        with open(prev_path) as f:
+            prev_data = json.load(f)
+
     print("Fetching regional gasoline (9 states + 7 PADD districts)...")
     area_weekly = {}
+    eia_regional_down = False
     for area in GAS_AREAS:
+        if eia_regional_down:
+            break
         try:
             area_weekly[area] = fetch_eia.series_weekly(
                 gas_series_for_area(area), date(SEASONAL_YEARS[0], 1, 1))
         except Exception as e:
-            print("  %s failed (%s) — state picker will omit it" % (area, e))
+            # One hard failure usually means the whole API is down; don't
+            # burn a timeout per series.
+            print("  %s failed (%s) — will carry forward previous regional data" % (area, e))
+            eia_regional_down = True
 
     print("Fetching weekly diesel...")
     diesel_weekly = get_diesel_weekly()
@@ -100,6 +113,14 @@ def main():
             gas_regions[area] = region
         except Exception as e:
             print("  %s compute failed (%s)" % (area, e))
+    if prev_data:
+        for area in GAS_AREAS:
+            if area not in gas_regions and area in prev_data.get("gas_regions", {}):
+                stale = dict(prev_data["gas_regions"][area])
+                stale["stale"] = True
+                gas_regions[area] = stale
+                print("  %s carried forward from previous build (through %s)"
+                      % (area, stale["latest_date"]))
     states = {}
     for code, area in sorted(STATE_TO_AREA.items()):
         if area not in gas_regions:

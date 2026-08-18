@@ -10,7 +10,7 @@ from constants import EIA_GAS_SERIES
 URL = "https://api.eia.gov/v2/petroleum/pri/gnd/data/"
 
 
-def series_weekly(series_id, start):
+def series_weekly(series_id, start, timeout=25):
     """One EIA weekly series as [(date, price)]."""
     key = os.environ.get("EIA_key") or os.environ.get("EIA_KEY")
     if not key:
@@ -25,7 +25,7 @@ def series_weekly(series_id, start):
         "sort[0][direction]": "asc",
         "length": 5000,
     }
-    resp = requests.get(URL, params=params, timeout=60)
+    resp = requests.get(URL, params=params, timeout=timeout)
     resp.raise_for_status()
     rows = resp.json()["response"]["data"]
     out = []
