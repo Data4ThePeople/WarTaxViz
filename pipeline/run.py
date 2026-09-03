@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 load_dotenv(os.path.join(ROOT, ".env"))
 
 import compute
+import seo
 import fetch_aaa
 import fetch_bls
 import fetch_dfa
@@ -223,6 +224,19 @@ def main():
         json.dump(data, f, indent=1)
     print("Wrote %s" % out_json)
 
+    # Search metadata: JSON-LD graph for the Prismic post's schema field,
+    # and <head> tags + the same graph for both GitHub Pages copies.
+    graph = seo.build_graph(data)
+    out_schema = os.path.join(ROOT, "site", "schema.json")
+    with open(out_schema, "w") as f:
+        f.write(seo.schema_json(graph))
+    print("Wrote %s" % out_schema)
+    out_faq = os.path.join(ROOT, "writeups", "war-tax-faq.md")
+    with open(out_faq, "w") as f:
+        f.write(seo.faq_markdown(data))
+    print("Wrote %s" % out_faq)
+
+    titles = {"template.html": "The War Tax", "embed-template.html": seo.TITLE}
     for tpl_name, out_name in [("template.html", "index.html"),
                                ("embed-template.html", "embed.html")]:
         template = os.path.join(ROOT, "site", tpl_name)
@@ -231,6 +245,9 @@ def main():
         with open(template) as f:
             html = f.read()
         html = html.replace("__DATA_JSON__", json.dumps(data))
+        html = html.replace("__SEO_HEAD__",
+                            seo.build_head(data, graph, titles[tpl_name]))
+        html = html.replace("__FAQ_HTML__", seo.faq_html(data))
         out_html = os.path.join(ROOT, "site", out_name)
         with open(out_html, "w") as f:
             f.write(html)

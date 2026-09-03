@@ -1,6 +1,6 @@
 {
  "war_start": "2026-02-27",
- "generated": "2026-09-02",
+ "generated": "2026-09-03",
  "costs": {
   "gas": 303.42,
   "food": -4.1,
@@ -158,7 +158,7 @@
   "peak_date": "2026-05-11",
   "peak_price": 4.5,
   "gallons_per_month": 60.8,
-  "aaa_latest": 4.1203,
+  "aaa_latest": 4.1436,
   "source": "EIA API v2 (EMM_EPMR_PTE_NUS_DPG)"
  },
  "gas_regions": {
@@ -313,7 +313,7 @@
    "peak_date": "2026-05-11",
    "peak_price": 4.5,
    "gallons_per_month": 60.8,
-   "aaa_latest": 4.1203,
+   "aaa_latest": 4.1436,
    "source": "EIA API v2 (EMM_EPMR_PTE_NUS_DPG)",
    "label": "US average"
   },
@@ -2754,257 +2754,257 @@
   "AK": {
    "name": "Alaska",
    "area": "R50",
-   "aaa": 4.937
+   "aaa": 4.9611
   },
   "AL": {
    "name": "Alabama",
    "area": "R30",
-   "aaa": 3.7625
+   "aaa": 3.7971
   },
   "AR": {
    "name": "Arkansas",
    "area": "R30",
-   "aaa": 3.7602
+   "aaa": 3.7767
   },
   "AZ": {
    "name": "Arizona",
    "area": "R50",
-   "aaa": 4.5293
+   "aaa": 4.5286
   },
   "CA": {
    "name": "California",
    "area": "SCA",
-   "aaa": 5.7369
+   "aaa": 5.782
   },
   "CO": {
    "name": "Colorado",
    "area": "SCO",
-   "aaa": 4.2745
+   "aaa": 4.2634
   },
   "CT": {
    "name": "Connecticut",
    "area": "R1X",
-   "aaa": 4.2553
+   "aaa": 4.2746
   },
   "DC": {
    "name": "District of Columbia",
    "area": "R1Y",
-   "aaa": 4.1943
+   "aaa": 4.1988
   },
   "DE": {
    "name": "Delaware",
    "area": "R1Y",
-   "aaa": 3.9684
+   "aaa": 3.9876
   },
   "FL": {
    "name": "Florida",
    "area": "SFL",
-   "aaa": 3.9755
+   "aaa": 3.9813
   },
   "GA": {
    "name": "Georgia",
    "area": "R1Z",
-   "aaa": 3.8538
+   "aaa": 3.8898
   },
   "HI": {
    "name": "Hawaii",
    "area": "R50",
-   "aaa": 5.4157
+   "aaa": 5.4101
   },
   "IA": {
    "name": "Iowa",
    "area": "R20",
-   "aaa": 3.8946
+   "aaa": 3.8743
   },
   "ID": {
    "name": "Idaho",
    "area": "R40",
-   "aaa": 4.62
+   "aaa": 4.625
   },
   "IL": {
    "name": "Illinois",
    "area": "R20",
-   "aaa": 4.3092
+   "aaa": 4.3217
   },
   "IN": {
    "name": "Indiana",
    "area": "R20",
-   "aaa": 3.4292
+   "aaa": 3.4476
   },
   "KS": {
    "name": "Kansas",
    "area": "R20",
-   "aaa": 3.7907
+   "aaa": 3.7848
   },
   "KY": {
    "name": "Kentucky",
    "area": "R20",
-   "aaa": 3.7884
+   "aaa": 3.8478
   },
   "LA": {
    "name": "Louisiana",
    "area": "R30",
-   "aaa": 3.7232
+   "aaa": 3.7589
   },
   "MA": {
    "name": "Massachusetts",
    "area": "SMA",
-   "aaa": 4.155
+   "aaa": 4.1741
   },
   "MD": {
    "name": "Maryland",
    "area": "R1Y",
-   "aaa": 3.9365
+   "aaa": 3.9956
   },
   "ME": {
    "name": "Maine",
    "area": "R1X",
-   "aaa": 4.1366
+   "aaa": 4.1695
   },
   "MI": {
    "name": "Michigan",
    "area": "R20",
-   "aaa": 4.0911
+   "aaa": 4.0697
   },
   "MN": {
    "name": "Minnesota",
    "area": "SMN",
-   "aaa": 3.984
+   "aaa": 3.9753
   },
   "MO": {
    "name": "Missouri",
    "area": "R20",
-   "aaa": 3.8023
+   "aaa": 3.8171
   },
   "MS": {
    "name": "Mississippi",
    "area": "R30",
-   "aaa": 3.691
+   "aaa": 3.7181
   },
   "MT": {
    "name": "Montana",
    "area": "R40",
-   "aaa": 4.3829
+   "aaa": 4.3827
   },
   "NC": {
    "name": "North Carolina",
    "area": "R1Z",
-   "aaa": 3.8368
+   "aaa": 3.8547
   },
   "ND": {
    "name": "North Dakota",
    "area": "R20",
-   "aaa": 3.9689
+   "aaa": 3.97
   },
   "NE": {
    "name": "Nebraska",
    "area": "R20",
-   "aaa": 3.9241
+   "aaa": 3.9198
   },
   "NH": {
    "name": "New Hampshire",
    "area": "R1X",
-   "aaa": 4.0948
+   "aaa": 4.1241
   },
   "NJ": {
    "name": "New Jersey",
    "area": "R1Y",
-   "aaa": 4.2119
+   "aaa": 4.2443
   },
   "NM": {
    "name": "New Mexico",
    "area": "R30",
-   "aaa": 4.0538
+   "aaa": 4.0498
   },
   "NV": {
    "name": "Nevada",
    "area": "R50",
-   "aaa": 4.8772
+   "aaa": 4.9141
   },
   "NY": {
    "name": "New York",
    "area": "SNY",
-   "aaa": 4.2623
+   "aaa": 4.2861
   },
   "OH": {
    "name": "Ohio",
    "area": "SOH",
-   "aaa": 3.8039
+   "aaa": 3.9003
   },
   "OK": {
    "name": "Oklahoma",
    "area": "R20",
-   "aaa": 3.694
+   "aaa": 3.7167
   },
   "OR": {
    "name": "Oregon",
    "area": "R50",
-   "aaa": 4.9543
+   "aaa": 4.9866
   },
   "PA": {
    "name": "Pennsylvania",
    "area": "R1Y",
-   "aaa": 4.2816
+   "aaa": 4.2955
   },
   "RI": {
    "name": "Rhode Island",
    "area": "R1X",
-   "aaa": 4.1679
+   "aaa": 4.1987
   },
   "SC": {
    "name": "South Carolina",
    "area": "R1Z",
-   "aaa": 3.7609
+   "aaa": 3.7807
   },
   "SD": {
    "name": "South Dakota",
    "area": "R20",
-   "aaa": 4.0096
+   "aaa": 3.9973
   },
   "TN": {
    "name": "Tennessee",
    "area": "R20",
-   "aaa": 3.7683
+   "aaa": 3.8231
   },
   "TX": {
    "name": "Texas",
    "area": "STX",
-   "aaa": 3.6793
+   "aaa": 3.6949
   },
   "UT": {
    "name": "Utah",
    "area": "R40",
-   "aaa": 4.4214
+   "aaa": 4.4212
   },
   "VA": {
    "name": "Virginia",
    "area": "R1Z",
-   "aaa": 3.8687
+   "aaa": 3.9314
   },
   "VT": {
    "name": "Vermont",
    "area": "R1X",
-   "aaa": 4.2555
+   "aaa": 4.2784
   },
   "WA": {
    "name": "Washington",
    "area": "SWA",
-   "aaa": 5.4373
+   "aaa": 5.472
   },
   "WI": {
    "name": "Wisconsin",
    "area": "R20",
-   "aaa": 3.8061
+   "aaa": 3.8056
   },
   "WV": {
    "name": "West Virginia",
    "area": "R1Z",
-   "aaa": 3.9335
+   "aaa": 3.9365
   },
   "WY": {
    "name": "Wyoming",
    "area": "R40",
-   "aaa": 4.3602
+   "aaa": 4.3539
   }
  },
  "diesel": {
@@ -3294,9 +3294,9 @@
  "market": {
   "base_date": "2026-02-27",
   "base": 6878.88,
-  "latest_date": "2026-09-01",
-  "latest": 7631.47,
-  "gain_pct": 0.10940589165678127,
+  "latest_date": "2026-09-02",
+  "latest": 7666.6,
+  "gain_pct": 0.11451282766962056,
   "series": [
    {
     "date": "2026-02-20",
@@ -3833,6 +3833,10 @@
    {
     "date": "2026-09-01",
     "close": 7631.47
+   },
+   {
+    "date": "2026-09-02",
+    "close": 7666.6
    }
   ]
  },

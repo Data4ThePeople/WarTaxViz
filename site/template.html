@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>The War Tax</title>
+__SEO_HEAD__
 <style>
   :root {
     color-scheme: light;
@@ -212,6 +212,13 @@
   th { color: var(--muted); font-weight: 600; font-size: 12px; }
   th:first-child, td:first-child { text-align: left; }
   .table-scroll { overflow-x: auto; }
+  /* FAQ */
+  .faq { margin-top: 56px; }
+  .faq h2 { margin-bottom: 8px; }
+  .faq-item { border-top: 1px solid var(--grid); padding: 10px 0; }
+  .faq-item:last-child { border-bottom: 1px solid var(--grid); }
+  .faq-item summary { cursor: pointer; font-weight: 600; font-size: 15px; color: var(--ink); }
+  .faq-item p { font-size: 14.5px; color: var(--ink-2); margin: 8px 0 4px; }
   .asof { font-size: 12.5px; color: var(--muted); margin-top: 26px; }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -330,6 +337,8 @@
     <p class="chart-note" id="diesel-note"></p>
   </div>
 </section>
+
+__FAQ_HTML__
 
 <footer class="methodology">
   <div class="col">

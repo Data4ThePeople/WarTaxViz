@@ -14,7 +14,9 @@ source .venv/bin/activate && python pipeline/run.py
 
 The pipeline fetches EIA (national gas, 16 regional series, diesel), FRED (S&P 500,
 fallbacks), BLS (CPI + grocery basket), Fed DFA, and AAA, then rebuilds
-`site/data.json`, `site/index.html`, and `site/embed.html`.
+`site/data.json`, `site/index.html`, `site/embed.html`, `site/schema.json` (the
+JSON-LD graph for the Prismic post's schema field, with current dates and
+figures) and `writeups/war-tax-faq.md` (the matching visible FAQ text).
 
 ## 2. Sanity checks (compare new site/data.json vs /tmp/wartax-prev.json)
 
@@ -40,7 +42,7 @@ old vs new. Note the new as-of dates.
 ## 4. Commit and push
 
 ```bash
-git add site/data.json site/index.html site/embed.html
+git add site/data.json site/index.html site/embed.html site/schema.json writeups/war-tax-faq.md
 git commit -m "Weekly data refresh: gas through <gas.latest_date>, S&P through <market.latest_date>"
 git push
 ```
@@ -55,7 +57,15 @@ Publish `site/index.html` with the Artifact tool, targeting the existing artifac
 - favicon: ⛽ (keep stable)
 - label: `refresh-<gas.latest_date>`
 
-## 6. Confirm the live embed updated
+## 6. Prismic schema (optional, monthly is plenty)
+
+`site/schema.json` now carries this week's dateModified, temporalCoverage and
+headline figures. The GitHub Pages copies pick it up automatically; the Prismic
+post's `schema` field does not. Mention to the user that pasting the new
+`site/schema.json` into the post's schema field refreshes the Dataset's
+dateModified for Google Dataset Search. Not required weekly.
+
+## 7. Confirm the live embed updated
 
 The Prismic iframe points at GitHub Pages
 (https://data4thepeople.github.io/WarTaxViz/site/embed.html), so the push in step 4
