@@ -516,7 +516,7 @@ def build_graph(data: dict) -> dict:
         "mainEntity": {"@id": PAGE + "#calculator"},
         "hasPart": {"@id": PAGE + "#calculator"},
         "isBasedOn": {"@id": PAGE + "#dataset"},
-        "citation": [{"@type": "Article",
+        "citation": [{"@type": "CreativeWork",
                       "name": "The Iran War: A War Tax for the Average "
                               "American, a Windfall for the 1%",
                       "url": PRIOR_PIECE}],
