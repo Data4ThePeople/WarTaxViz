@@ -12,9 +12,10 @@ URL = "https://api.eia.gov/v2/petroleum/pri/gnd/data/"
 
 def series_weekly(series_id, start, timeout=25):
     """One EIA weekly series as [(date, price)]."""
-    key = os.environ.get("EIA_key") or os.environ.get("EIA_KEY")
+    key = (os.environ.get("EIA_API_KEY") or os.environ.get("EIA_key")
+           or os.environ.get("EIA_KEY"))
     if not key:
-        raise RuntimeError("EIA_key not set")
+        raise RuntimeError("EIA_API_KEY not set")
     params = {
         "api_key": key,
         "frequency": "weekly",

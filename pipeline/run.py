@@ -12,6 +12,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 from dotenv import load_dotenv
 
 load_dotenv(os.path.join(ROOT, ".env"))
+load_dotenv(os.path.expanduser("~/.claude/d4tp-process/.env"))  # central keys
 
 import compute
 import seo
