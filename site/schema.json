@@ -61,7 +61,7 @@
       },
       "inLanguage": "en-US",
       "datePublished": "2026-08-14T09:00:00-04:00",
-      "dateModified": "2026-09-03T07:00:00-04:00",
+      "dateModified": "2026-09-14T07:00:00-04:00",
       "breadcrumb": {
         "@id": "https://www.data4thepeople.com/p/war-tax-viz/#breadcrumb"
       }
@@ -78,7 +78,7 @@
         "https://images.prismic.io/data4thepeople/WMQgaAyDuugIPVAZ_war-tax-hero-prismic.jpg?auto=format,compress&fit=crop&w=1200&h=1200"
       ],
       "datePublished": "2026-08-14T09:00:00-04:00",
-      "dateModified": "2026-09-03T07:00:00-04:00",
+      "dateModified": "2026-09-14T07:00:00-04:00",
       "articleSection": "Data 4 Thought",
       "isPartOf": {
         "@type": "CreativeWorkSeries",
@@ -154,16 +154,16 @@
         "War Tax Calculator data",
         "Iran war household cost tracker"
       ],
-      "description": "Weekly ledger of war-attributable household costs versus after-tax stock-market gains since February 27, 2026, updated through August 31, 2026. Gasoline cost is the actual EIA weekly retail price (series EMM_EPMR_PTE_NUS_DPG nationally; nine state series and seven PADD-district series for the state picker) minus a no-war counterfactual built from the median 2015 to 2025 seasonal price trajectory projected from the last prewar price, multiplied by average household consumption of about 61 gallons a month derived from BLS Consumer Expenditure Survey 2024 gasoline spending. Grocery and home energy costs use seasonally adjusted CPI (CUSR0000SAF11 food at home; CUSR0000SEHF01 electricity; CUSR0000SEHF02 utility piped gas) against each category's trailing-12-month prewar trend, applied to CEX 2024 household spending; categories below trend count as negative cost. A grocery basket of 14 BLS average-price staples (eggs, whole milk, white bread, ground beef, chicken breast, ground coffee, bacon, cheddar cheese, bananas, potatoes, tomatoes, rice, sugar, orange juice) is tracked from February 2026. On-highway diesel (EMD_EPD2D_PTE_NUS_DPG) is tracked as a leading indicator with the same counterfactual and excluded from the cost total. Market gains apply the S&P 500 change from its February 27, 2026 close (6,878.88, via FRED series SP500) to prewar holdings, taxed at short-term ordinary rates. Wealth-group holdings are corporate equities and mutual fund shares per household from the Federal Reserve Distributional Financial Accounts, 2026:Q1, which exclude pension and 401(k) holdings. As of August 31, 2026 the cumulative cost per household is $302, of which $303 is gasoline; the S&P 500 is +11.5% from its prewar close.",
+      "description": "Weekly ledger of war-attributable household costs versus after-tax stock-market gains since February 27, 2026, updated through September 7, 2026. Gasoline cost is the actual EIA weekly retail price (series EMM_EPMR_PTE_NUS_DPG nationally; nine state series and seven PADD-district series for the state picker) minus a no-war counterfactual built from the median 2015 to 2025 seasonal price trajectory projected from the last prewar price, multiplied by average household consumption of about 61 gallons a month derived from BLS Consumer Expenditure Survey 2024 gasoline spending. Grocery and home energy costs use seasonally adjusted CPI (CUSR0000SAF11 food at home; CUSR0000SEHF01 electricity; CUSR0000SEHF02 utility piped gas) against each category's trailing-12-month prewar trend, applied to CEX 2024 household spending; categories below trend count as negative cost. A grocery basket of 14 BLS average-price staples (eggs, whole milk, white bread, ground beef, chicken breast, ground coffee, bacon, cheddar cheese, bananas, potatoes, tomatoes, rice, sugar, orange juice) is tracked from February 2026. On-highway diesel (EMD_EPD2D_PTE_NUS_DPG) is tracked as a leading indicator with the same counterfactual and excluded from the cost total. Market gains apply the S&P 500 change from its February 27, 2026 close (6,878.88, via FRED series SP500) to prewar holdings, taxed at short-term ordinary rates. Wealth-group holdings are corporate equities and mutual fund shares per household from the Federal Reserve Distributional Financial Accounts, 2026:Q1, which exclude pension and 401(k) holdings. As of September 7, 2026 the cumulative cost per household is $311, of which $318 is gasoline; the S&P 500 is +11.3% from its prewar close.",
       "url": "https://www.data4thepeople.com/p/war-tax-viz/",
       "sameAs": "https://github.com/Data4ThePeople/WarTaxViz",
       "license": "https://www.data4thepeople.com/terms-of-use",
       "isAccessibleForFree": true,
       "inLanguage": "en-US",
       "datePublished": "2026-08-14T09:00:00-04:00",
-      "dateModified": "2026-09-03T07:00:00-04:00",
-      "version": "2026-08-31",
-      "temporalCoverage": "2026-02-27/2026-08-31",
+      "dateModified": "2026-09-14T07:00:00-04:00",
+      "version": "2026-09-07",
+      "temporalCoverage": "2026-02-27/2026-09-07",
       "spatialCoverage": {
         "@type": "Place",
         "name": "United States"
@@ -201,31 +201,31 @@
           "name": "Cumulative war-attributable household cost, total",
           "description": "Gasoline plus food at home plus home energy, versus the no-war counterfactual, per average U.S. household since February 27, 2026",
           "unitText": "U.S. dollars",
-          "value": 302.37
+          "value": 311.42
         },
         {
           "@type": "PropertyValue",
           "name": "Cumulative war-attributable gasoline cost per household",
           "unitText": "U.S. dollars",
-          "value": 303.42
+          "value": 317.78
         },
         {
           "@type": "PropertyValue",
           "name": "Cumulative war-attributable food-at-home cost per household",
           "unitText": "U.S. dollars",
-          "value": -4.1
+          "value": -6.9
         },
         {
           "@type": "PropertyValue",
           "name": "Cumulative war-attributable home energy cost per household",
           "unitText": "U.S. dollars",
-          "value": 3.05
+          "value": 0.53
         },
         {
           "@type": "PropertyValue",
           "name": "Weekly U.S. retail regular gasoline price, actual",
           "unitText": "U.S. dollars per gallon",
-          "value": 4.071
+          "value": 4.157
         },
         {
           "@type": "PropertyValue",
@@ -241,7 +241,7 @@
           "@type": "PropertyValue",
           "name": "Weekly U.S. on-highway diesel price, actual and no-war counterfactual",
           "unitText": "U.S. dollars per gallon",
-          "value": 5.599
+          "value": 5.967
         },
         {
           "@type": "PropertyValue",
@@ -253,13 +253,13 @@
           "@type": "PropertyValue",
           "name": "CPI food at home change since February 2026",
           "unitText": "percent",
-          "value": 0.7
+          "value": 0.74
         },
         {
           "@type": "PropertyValue",
           "name": "S&P 500 index change since February 27, 2026",
           "unitText": "percent",
-          "value": 11.45
+          "value": 11.31
         },
         {
           "@type": "PropertyValue",
@@ -385,7 +385,7 @@
       },
       "inLanguage": "en-US",
       "datePublished": "2026-08-14T09:00:00-04:00",
-      "dateModified": "2026-09-03T07:00:00-04:00",
+      "dateModified": "2026-09-14T07:00:00-04:00",
       "screenshot": "https://data4thepeople.github.io/WarTaxViz/writeups/war-tax-viz-email.png",
       "image": "https://images.prismic.io/data4thepeople/WMQgaAyDuugIPVAZ_war-tax-hero-prismic.jpg?auto=format,compress&fit=crop&w=1200&h=675",
       "license": "https://www.data4thepeople.com/terms-of-use",
@@ -407,7 +407,7 @@
           "name": "What is the War Tax?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The War Tax is what the 2026 Iran war has cost an average American household in higher prices, minus what it would have paid had prewar patterns held. It counts gasoline, groceries and home energy, accumulated week by week since the first strikes on February 27, 2026, and sets that cost against the after-tax stock-market gains a household has seen over the same period. As of August 31, 2026, the cost side stands at $302 per household, almost all of it at the pump."
+            "text": "The War Tax is what the 2026 Iran war has cost an average American household in higher prices, minus what it would have paid had prewar patterns held. It counts gasoline, groceries and home energy, accumulated week by week since the first strikes on February 27, 2026, and sets that cost against the after-tax stock-market gains a household has seen over the same period. As of September 7, 2026, the cost side stands at $311 per household, almost all of it at the pump."
           }
         },
         {
@@ -415,7 +415,7 @@
           "name": "How much has the Iran war raised gas prices?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Regular gasoline went from $2.94 a gallon the week before the war to a peak of $4.50 on May 11, 2026, and was $4.07 in the week of August 31, 2026. The War Tax compares each week's actual EIA retail price with a no-war path, the median 2015 to 2025 seasonal trajectory projected from the last prewar price, and multiplies the gap by about 61 gallons a month of average household consumption. That is $303 of extra gasoline spending per household so far."
+            "text": "Regular gasoline went from $2.94 a gallon the week before the war to a peak of $4.50 on May 11, 2026, and was $4.16 in the week of September 7, 2026. The War Tax compares each week's actual EIA retail price with a no-war path, the median 2015 to 2025 seasonal trajectory projected from the last prewar price, and multiplies the gap by about 61 gallons a month of average household consumption. That is $318 of extra gasoline spending per household so far."
           }
         },
         {
@@ -423,7 +423,7 @@
           "name": "Who has come out ahead financially from the war?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Households with money in the stock market before the war. The S&P 500 has moved +11.5% since its February 27, 2026 close, and that gain, taxed at short-term rates, dwarfs the war's household costs for anyone with substantial holdings. The average top 1% household held about $20,502,716 in stocks and mutual funds outside retirement accounts; the average top 0.1% household held about $97,957,441. The median American family holds no stock outside retirement accounts, so it pays the costs and collects no offsetting gain."
+            "text": "Households with money in the stock market before the war. The S&P 500 has moved +11.3% since its February 27, 2026 close, and that gain, taxed at short-term rates, dwarfs the war's household costs for anyone with substantial holdings. The average top 1% household held about $20,502,716 in stocks and mutual funds outside retirement accounts; the average top 0.1% household held about $97,957,441. The median American family holds no stock outside retirement accounts, so it pays the costs and collects no offsetting gain."
           }
         },
         {
@@ -439,7 +439,7 @@
           "name": "How often is the War Tax updated?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Weekly. Gasoline and diesel follow the EIA's Monday retail price release, the S&P 500 updates through the latest trading day, and grocery and home-energy costs update when the Bureau of Labor Statistics publishes each month's Consumer Price Index. The latest figures cover gasoline through August 31, 2026 and the S&P 500 through September 2, 2026."
+            "text": "Weekly. Gasoline and diesel follow the EIA's Monday retail price release, the S&P 500 updates through the latest trading day, and grocery and home-energy costs update when the Bureau of Labor Statistics publishes each month's Consumer Price Index. The latest figures cover gasoline through September 7, 2026 and the S&P 500 through September 11, 2026."
           }
         }
       ]
