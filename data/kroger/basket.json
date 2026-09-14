@@ -1,0 +1,679 @@
+{
+ "source": "Foods chosen by weekly cost share in the TFP 2021 reference-family basket; quantities are TFP pounds per week",
+ "reference_family": "Male and female 20-50, children 6-8 and 9-11 (USDA TFP reference family)",
+ "tfp_total_cost_week": 192.8391,
+ "covered_cost_week": 126.243,
+ "coverage_share": 0.6547,
+ "lb_per_gallon_milk": 8.6,
+ "lb_per_fl_oz_juice": 0.06796875,
+ "lb_per_dozen_eggs": 1.5,
+ "foods": [
+  {
+   "key": "wheat_bread",
+   "name": "Whole wheat bread",
+   "ecs": [
+    "51300110",
+    "51301010"
+   ],
+   "unit": "lb",
+   "note": "TFP whole wheat + wheat/cracked wheat bread",
+   "terms": [
+    "wheat-bread"
+   ],
+   "lbs_week": 5.5993,
+   "tfp_cost_week": 12.0198,
+   "tfp_share": 0.0623,
+   "tfp_desc": [
+    "Bread, whole wheat",
+    "Bread, wheat or cracked wheat"
+   ],
+   "category": "Whole grain staple grains (e.g., rice, pasta, breads, tortillas)"
+  },
+  {
+   "key": "apples",
+   "name": "Apples",
+   "ecs": [
+    "9003"
+   ],
+   "unit": "lb",
+   "terms": [
+    "apples",
+    "gala",
+    "fuji",
+    "honeycrisp",
+    "red-delicious",
+    "granny-smith"
+   ],
+   "lbs_week": 4.4592,
+   "tfp_cost_week": 7.9303,
+   "tfp_share": 0.0411,
+   "tfp_desc": [
+    "Apples, raw, with skin"
+   ],
+   "category": "Whole fruit"
+  },
+  {
+   "key": "carrots",
+   "name": "Carrots",
+   "ecs": [
+    "11124"
+   ],
+   "unit": "lb",
+   "terms": [
+    "carrots"
+   ],
+   "lbs_week": 5.2784,
+   "tfp_cost_week": 7.5694,
+   "tfp_share": 0.0393,
+   "tfp_desc": [
+    "Carrots, raw"
+   ],
+   "category": "Red and orange vegetables"
+  },
+  {
+   "key": "breaded_chicken",
+   "name": "Frozen breaded chicken",
+   "ecs": [
+    "24127202",
+    "22974",
+    "24198671"
+   ],
+   "unit": "lb",
+   "note": "TFP breaded chicken breast + nuggets + patties",
+   "terms": [
+    "chicken-nuggets",
+    "chicken-patties",
+    "chicken-strips",
+    "chicken-tenders",
+    "breaded-chicken",
+    "crispy-chicken"
+   ],
+   "lbs_week": 3.6499,
+   "tfp_cost_week": 11.7215,
+   "tfp_share": 0.0608,
+   "tfp_desc": [
+    "Chicken breast, fried, coated, prepared skinless, coating eaten, from raw",
+    "Chicken, nuggets, dark and white meat, precooked, frozen, not reheated",
+    "Chicken patty, breaded"
+   ],
+   "category": "Poultry"
+  },
+  {
+   "key": "milk_1pct",
+   "name": "Milk, 1%",
+   "ecs": [
+    "11112210"
+   ],
+   "unit": "lb",
+   "lb_per_unit": [
+    "gallon",
+    8.6
+   ],
+   "terms": [
+    "1-lowfat-milk",
+    "1-low-fat-milk",
+    "1-milk",
+    "lowfat-milk"
+   ],
+   "lbs_week": 13.6345,
+   "tfp_cost_week": 6.2126,
+   "tfp_share": 0.0322,
+   "tfp_desc": [
+    "Milk, low fat (1%)"
+   ],
+   "category": "Higher nutrient density milk, yogurt, soy alternatives"
+  },
+  {
+   "key": "tilapia",
+   "name": "Tilapia fillets",
+   "ecs": [
+    "15261"
+   ],
+   "unit": "lb",
+   "terms": [
+    "tilapia"
+   ],
+   "lbs_week": 1.3758,
+   "tfp_cost_week": 6.086,
+   "tfp_share": 0.0316,
+   "tfp_desc": [
+    "Fish, tilapia, raw"
+   ],
+   "category": "Seafood"
+  },
+  {
+   "key": "potatoes",
+   "name": "Potatoes",
+   "ecs": [
+    "11352"
+   ],
+   "unit": "lb",
+   "terms": [
+    "russet-potatoes",
+    "potatoes"
+   ],
+   "lbs_week": 6.3983,
+   "tfp_cost_week": 4.7881,
+   "tfp_share": 0.0248,
+   "tfp_desc": [
+    "Potatoes, flesh and skin, raw"
+   ],
+   "category": "Starchy vegetables"
+  },
+  {
+   "key": "peanut_butter",
+   "name": "Peanut butter",
+   "ecs": [
+    "42202000"
+   ],
+   "unit": "lb",
+   "terms": [
+    "peanut-butter"
+   ],
+   "lbs_week": 1.8992,
+   "tfp_cost_week": 4.5383,
+   "tfp_share": 0.0235,
+   "tfp_desc": [
+    "Peanut butter"
+   ],
+   "category": "Nuts, seeds, soy products"
+  },
+  {
+   "key": "broccoli_frozen",
+   "name": "Broccoli, frozen",
+   "ecs": [
+    "11092"
+   ],
+   "unit": "lb",
+   "terms": [
+    "broccoli-florets",
+    "broccoli-cuts",
+    "frozen-broccoli",
+    "broccoli"
+   ],
+   "lbs_week": 2.1301,
+   "tfp_cost_week": 4.4979,
+   "tfp_share": 0.0233,
+   "tfp_desc": [
+    "Broccoli, frozen, chopped, unprepared"
+   ],
+   "category": "Dark green vegetables"
+  },
+  {
+   "key": "orange_juice",
+   "name": "Orange juice",
+   "ecs": [
+    "61210220"
+   ],
+   "unit": "lb",
+   "lb_per_unit": [
+    "fl oz",
+    0.06796875
+   ],
+   "terms": [
+    "orange-juice"
+   ],
+   "lbs_week": 5.1274,
+   "tfp_cost_week": 4.3027,
+   "tfp_share": 0.0223,
+   "tfp_desc": [
+    "Orange juice, 100%, canned, bottled or in a carton"
+   ],
+   "category": "100% fruit juice"
+  },
+  {
+   "key": "milk_skim",
+   "name": "Milk, skim",
+   "ecs": [
+    "11113000"
+   ],
+   "unit": "lb",
+   "lb_per_unit": [
+    "gallon",
+    8.6
+   ],
+   "terms": [
+    "skim-milk",
+    "fat-free-milk"
+   ],
+   "lbs_week": 8.1974,
+   "tfp_cost_week": 3.8681,
+   "tfp_share": 0.0201,
+   "tfp_desc": [
+    "Milk, fat free (skim)"
+   ],
+   "category": "Higher nutrient density milk, yogurt, soy alternatives"
+  },
+  {
+   "key": "tuna",
+   "name": "Tuna, canned light",
+   "ecs": [
+    "15121"
+   ],
+   "unit": "lb",
+   "terms": [
+    "chunk-light-tuna",
+    "light-tuna",
+    "tuna-in-water"
+   ],
+   "lbs_week": 0.9017,
+   "tfp_cost_week": 3.8646,
+   "tfp_share": 0.02,
+   "tfp_desc": [
+    "Fish, tuna, light, canned in water, drained solids"
+   ],
+   "category": "Seafood"
+  },
+  {
+   "key": "bananas",
+   "name": "Bananas",
+   "ecs": [
+    "9040"
+   ],
+   "unit": "lb",
+   "terms": [
+    "bananas",
+    "banana"
+   ],
+   "lbs_week": 5.9749,
+   "tfp_cost_week": 3.6371,
+   "tfp_share": 0.0189,
+   "tfp_desc": [
+    "Bananas, raw"
+   ],
+   "category": "Whole fruit"
+  },
+  {
+   "key": "eggs",
+   "name": "Eggs, large",
+   "ecs": [
+    "1123"
+   ],
+   "unit": "lb",
+   "lb_per_unit": [
+    "dozen",
+    1.5
+   ],
+   "terms": [
+    "large-eggs",
+    "large-white-eggs",
+    "grade-a-eggs",
+    "eggs"
+   ],
+   "lbs_week": 2.1228,
+   "tfp_cost_week": 3.3284,
+   "tfp_share": 0.0173,
+   "tfp_desc": [
+    "Egg, whole, raw, fresh"
+   ],
+   "category": "Eggs"
+  },
+  {
+   "key": "milk_2pct",
+   "name": "Milk, 2%",
+   "ecs": [
+    "11112110"
+   ],
+   "unit": "lb",
+   "lb_per_unit": [
+    "gallon",
+    8.6
+   ],
+   "terms": [
+    "2-reduced-fat-milk",
+    "reduced-fat-milk",
+    "2-milk"
+   ],
+   "lbs_week": 7.2728,
+   "tfp_cost_week": 3.3268,
+   "tfp_share": 0.0173,
+   "tfp_desc": [
+    "Milk, reduced fat (2%)"
+   ],
+   "category": "Lower nutrient density milk, yogurt, soy alternatives"
+  },
+  {
+   "key": "tomatoes",
+   "name": "Tomatoes",
+   "ecs": [
+    "11529"
+   ],
+   "unit": "lb",
+   "terms": [
+    "roma-tomatoes",
+    "vine-tomatoes",
+    "tomatoes-on-the-vine",
+    "tomatoes",
+    "tomato"
+   ],
+   "lbs_week": 1.2631,
+   "tfp_cost_week": 2.9773,
+   "tfp_share": 0.0154,
+   "tfp_desc": [
+    "Tomatoes, red, ripe, raw, year round average"
+   ],
+   "category": "Red and orange vegetables"
+  },
+  {
+   "key": "drumsticks",
+   "name": "Chicken drumsticks",
+   "ecs": [
+    "5069"
+   ],
+   "unit": "lb",
+   "terms": [
+    "drumsticks"
+   ],
+   "lbs_week": 1.9684,
+   "tfp_cost_week": 2.916,
+   "tfp_share": 0.0151,
+   "tfp_desc": [
+    "Chicken, broilers or fryers, drumstick, meat and skin, cooked, roasted"
+   ],
+   "category": "Poultry"
+  },
+  {
+   "key": "milk_whole",
+   "name": "Milk, whole",
+   "ecs": [
+    "11111000"
+   ],
+   "unit": "lb",
+   "lb_per_unit": [
+    "gallon",
+    8.6
+   ],
+   "terms": [
+    "whole-milk",
+    "vitamin-d-milk"
+   ],
+   "lbs_week": 5.7236,
+   "tfp_cost_week": 2.8055,
+   "tfp_share": 0.0145,
+   "tfp_desc": [
+    "Milk, whole"
+   ],
+   "category": "Lower nutrient density milk, yogurt, soy alternatives"
+  },
+  {
+   "key": "lettuce",
+   "name": "Lettuce, iceberg",
+   "ecs": [
+    "11252"
+   ],
+   "unit": "lb",
+   "terms": [
+    "iceberg-lettuce",
+    "iceberg"
+   ],
+   "lbs_week": 1.986,
+   "tfp_cost_week": 2.7827,
+   "tfp_share": 0.0144,
+   "tfp_desc": [
+    "Lettuce, iceberg (includes crisphead types), raw"
+   ],
+   "category": "Other vegetables"
+  },
+  {
+   "key": "pinto_beans",
+   "name": "Pinto beans, canned",
+   "ecs": [
+    "41104020"
+   ],
+   "unit": "lb",
+   "note": "TFP weight is cooked; canned net weight used",
+   "terms": [
+    "pinto-beans"
+   ],
+   "lbs_week": 3.1967,
+   "tfp_cost_week": 2.6758,
+   "tfp_share": 0.0139,
+   "tfp_desc": [
+    "Pinto, calico, or red Mexican beans, dry, cooked, fat not added in cooking"
+   ],
+   "category": "Beans, peas, lentils"
+  },
+  {
+   "key": "pork",
+   "name": "Pork loin / roast / shoulder",
+   "ecs": [
+    "22400110",
+    "10020",
+    "10080"
+   ],
+   "unit": "lb",
+   "note": "TFP pork roast + fresh loin + shoulder",
+   "terms": [
+    "pork-loin",
+    "pork-roast",
+    "pork-shoulder",
+    "boston-butt",
+    "pork-sirloin"
+   ],
+   "lbs_week": 1.3231,
+   "tfp_cost_week": 5.1063,
+   "tfp_share": 0.0265,
+   "tfp_desc": [
+    "Pork roast, NS as to cut, cooked, lean and fat eaten",
+    "Pork, fresh, loin, whole, separable lean and fat, raw",
+    "Pork, fresh, shoulder, (Boston butt), blade (steaks), separable lean and fat, raw"
+   ],
+   "category": "Meats"
+  },
+  {
+   "key": "white_bread",
+   "name": "White bread",
+   "ecs": [
+    "51101000"
+   ],
+   "unit": "lb",
+   "terms": [
+    "white-bread",
+    "sandwich-bread"
+   ],
+   "lbs_week": 1.5216,
+   "tfp_cost_week": 2.5533,
+   "tfp_share": 0.0132,
+   "tfp_desc": [
+    "Bread, white"
+   ],
+   "category": "Refined grain staple grains (e.g., rice, pasta, breads, tortillas)"
+  },
+  {
+   "key": "quinoa",
+   "name": "Quinoa",
+   "ecs": [
+    "20137"
+   ],
+   "unit": "lb",
+   "note": "TFP weight is cooked; dry weight used",
+   "terms": [
+    "quinoa"
+   ],
+   "lbs_week": 0.3126,
+   "tfp_cost_week": 2.1624,
+   "tfp_share": 0.0112,
+   "tfp_desc": [
+    "Quinoa, cooked"
+   ],
+   "category": "Whole grain staple grains (e.g., rice, pasta, breads, tortillas)"
+  },
+  {
+   "key": "oranges",
+   "name": "Oranges",
+   "ecs": [
+    "9200"
+   ],
+   "unit": "lb",
+   "terms": [
+    "navel-oranges",
+    "oranges"
+   ],
+   "lbs_week": 1.6744,
+   "tfp_cost_week": 2.0379,
+   "tfp_share": 0.0106,
+   "tfp_desc": [
+    "Oranges, raw, all commercial varieties"
+   ],
+   "category": "Whole fruit"
+  },
+  {
+   "key": "cucumbers",
+   "name": "Cucumbers",
+   "ecs": [
+    "11205"
+   ],
+   "unit": "lb",
+   "terms": [
+    "cucumber"
+   ],
+   "lbs_week": 1.0784,
+   "tfp_cost_week": 1.8613,
+   "tfp_share": 0.0097,
+   "tfp_desc": [
+    "Cucumber, with peel, raw"
+   ],
+   "category": "Other vegetables"
+  },
+  {
+   "key": "corn_canned",
+   "name": "Corn, canned",
+   "ecs": [
+    "11172"
+   ],
+   "unit": "lb",
+   "terms": [
+    "whole-kernel-corn",
+    "sweet-corn",
+    "golden-corn"
+   ],
+   "lbs_week": 2.017,
+   "tfp_cost_week": 1.8381,
+   "tfp_share": 0.0095,
+   "tfp_desc": [
+    "Corn, sweet, yellow, canned, whole kernel, drained solids"
+   ],
+   "category": "Starchy vegetables"
+  },
+  {
+   "key": "chicken_breast",
+   "name": "Chicken breast, boneless",
+   "ecs": [
+    "5062"
+   ],
+   "unit": "lb",
+   "terms": [
+    "boneless-skinless-chicken-breast",
+    "chicken-breast"
+   ],
+   "lbs_week": 0.5482,
+   "tfp_cost_week": 1.7574,
+   "tfp_share": 0.0091,
+   "tfp_desc": [
+    "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw"
+   ],
+   "category": "Poultry"
+  },
+  {
+   "key": "greek_yogurt",
+   "name": "Greek yogurt, plain nonfat",
+   "ecs": [
+    "11411420"
+   ],
+   "unit": "lb",
+   "terms": [
+    "plain-nonfat-greek-yogurt",
+    "nonfat-plain-greek-yogurt",
+    "plain-greek-yogurt",
+    "greek-yogurt"
+   ],
+   "lbs_week": 0.543,
+   "tfp_cost_week": 1.6908,
+   "tfp_share": 0.0088,
+   "tfp_desc": [
+    "Yogurt, Greek, nonfat milk, plain"
+   ],
+   "category": "Higher nutrient density milk, yogurt, soy alternatives"
+  },
+  {
+   "key": "soy_milk",
+   "name": "Soy milk",
+   "ecs": [
+    "11320000"
+   ],
+   "unit": "lb",
+   "lb_per_unit": [
+    "fl oz",
+    0.06796875
+   ],
+   "terms": [
+    "soymilk",
+    "soy-milk"
+   ],
+   "lbs_week": 1.9592,
+   "tfp_cost_week": 1.6021,
+   "tfp_share": 0.0083,
+   "tfp_desc": [
+    "Soy milk"
+   ],
+   "category": "Higher nutrient density milk, yogurt, soy alternatives"
+  },
+  {
+   "key": "watermelon",
+   "name": "Watermelon",
+   "ecs": [
+    "9326"
+   ],
+   "unit": "lb",
+   "terms": [
+    "watermelon"
+   ],
+   "lbs_week": 2.6159,
+   "tfp_cost_week": 1.5055,
+   "tfp_share": 0.0078,
+   "tfp_desc": [
+    "Watermelon, raw"
+   ],
+   "category": "Whole fruit"
+  },
+  {
+   "key": "black_beans",
+   "name": "Black beans, canned",
+   "ecs": [
+    "41102020"
+   ],
+   "unit": "lb",
+   "note": "TFP weight is cooked; canned net weight used",
+   "terms": [
+    "black-beans"
+   ],
+   "lbs_week": 1.4011,
+   "tfp_cost_week": 1.3267,
+   "tfp_share": 0.0069,
+   "tfp_desc": [
+    "Black, brown, or Bayo beans, dry, cooked, fat not added in cooking"
+   ],
+   "category": "Beans, peas, lentils"
+  },
+  {
+   "key": "rice_white",
+   "name": "Rice, white long grain",
+   "ecs": [
+    "20044"
+   ],
+   "unit": "lb",
+   "terms": [
+    "long-grain-white-rice",
+    "white-rice",
+    "enriched-rice"
+   ],
+   "lbs_week": 0.9764,
+   "tfp_cost_week": 0.9524,
+   "tfp_share": 0.0049,
+   "tfp_desc": [
+    "Rice, white, long-grain, regular, raw, enriched"
+   ],
+   "category": "Refined grain staple grains (e.g., rice, pasta, breads, tortillas)"
+  }
+ ]
+}
