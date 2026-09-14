@@ -96,7 +96,7 @@ def main():
                 rec.update(upc=h["upc"], ts=ts, url=url, slug=m.group(1) if m else slug,
                            archive_url="http://web.archive.org/web/%s/%s" % (ts, url))
                 pages[k] = rec
-                json.dump(cache, open(PRICES, "w"), indent=1)
+                wayback.save_cache(cache)
                 if rec.get("regular"):
                     got = True
                     break
@@ -105,7 +105,7 @@ def main():
             print("  %-13s %-52s now $%5.2f  captures %d  %s" % (h["upc"], (h["name"] or "")[:52], h["regular"], len(caps),
                                                                  "PRE-WAR PRICE" if got else "-"), flush=True)
         print("%-28s live candidates %2d, with pre-war price %2d" % (food["name"], len(cands), n_priced), flush=True)
-        json.dump(cache, open(PRICES, "w"), indent=1)
+        wayback.save_cache(cache)
 
 
 if __name__ == "__main__":

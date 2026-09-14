@@ -35,27 +35,45 @@ ANCHOR_LOCATION = "02900310"   # Kroger #310, 1790 E Market St, Harrisonburg VA 
 UA = "Data4ThePeople WarTax (eric@asaltollc.com)"
 
 
+class Token:
+    """Client-credentials token that renews itself (Kroger tokens last 30 minutes)."""
+
+    def __init__(self):
+        self.value, self.born = None, 0
+
+    def get(self, force=False):
+        if force or self.value is None or time.time() - self.born > 25 * 60:
+            cid, sec = os.environ.get("KROGER_CLIENT_ID"), os.environ.get("KROGER_CLIENT_SECRET")
+            if not cid or not sec:
+                sys.exit("KROGER_CLIENT_ID / KROGER_CLIENT_SECRET missing; add them to ~/.claude/d4tp-process/.env")
+            auth = base64.b64encode(("%s:%s" % (cid, sec)).encode()).decode()
+            r = requests.post(API + "/connect/oauth2/token",
+                              headers={"Authorization": "Basic " + auth, "User-Agent": UA,
+                                       "Content-Type": "application/x-www-form-urlencoded"},
+                              data={"grant_type": "client_credentials", "scope": "product.compact"},
+                              timeout=30)
+            r.raise_for_status()
+            self.value, self.born = r.json()["access_token"], time.time()
+        return self.value
+
+
 def token():
-    cid, sec = os.environ.get("KROGER_CLIENT_ID"), os.environ.get("KROGER_CLIENT_SECRET")
-    if not cid or not sec:
-        sys.exit("KROGER_CLIENT_ID / KROGER_CLIENT_SECRET missing; add them to ~/.claude/d4tp-process/.env")
-    auth = base64.b64encode(("%s:%s" % (cid, sec)).encode()).decode()
-    r = requests.post(API + "/connect/oauth2/token",
-                      headers={"Authorization": "Basic " + auth, "User-Agent": UA,
-                               "Content-Type": "application/x-www-form-urlencoded"},
-                      data={"grant_type": "client_credentials", "scope": "product.compact"},
-                      timeout=30)
-    r.raise_for_status()
-    return r.json()["access_token"]
+    return Token()
 
 
 def get(tok, path, params=None):
-    r = requests.get(API + path, params=params, timeout=30,
-                     headers={"Authorization": "Bearer " + tok, "Accept": "application/json", "User-Agent": UA})
-    if r.status_code == 429:
-        time.sleep(5)
-        r = requests.get(API + path, params=params, timeout=30,
-                         headers={"Authorization": "Bearer " + tok, "Accept": "application/json", "User-Agent": UA})
+    def _call():
+        return requests.get(API + path, params=params, timeout=30,
+                            headers={"Authorization": "Bearer " + tok.get(), "Accept": "application/json", "User-Agent": UA})
+    r = _call()
+    if r.status_code == 401:
+        tok.get(force=True)
+        r = _call()
+    for wait in (5, 15, 45):
+        if r.status_code not in (429, 500, 502, 503, 504):
+            break
+        time.sleep(wait)
+        r = _call()
     r.raise_for_status()
     return r.json()
 

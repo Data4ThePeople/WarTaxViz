@@ -198,13 +198,13 @@ EXCLUDE_ALL = ["organic", "cat", "dog", "kitten", "puppy", "treats", "candle", "
                "chips", "ice-cream", "pudding", "muffin", "muffins", "cake", "pie", "protein", "smoothie"]
 EXCLUDE = {
     "apples": ["sauce", "applesauce", "juice", "cider", "butter", "cinnamon", "dried", "caramel", "pouch", "pouches", "chip", "fritter"],
-    "bananas": ["bread", "cream", "split", "nut", "flavored", "flavor", "instant", "dried", "plantain", "pepper", "peppers", "blueberry", "fruit", "frozen", "sliced", "strawberry", "chips"],
+    "bananas": ["boat", "bread", "cream", "split", "nut", "flavored", "flavor", "instant", "dried", "plantain", "pepper", "peppers", "blueberry", "fruit", "frozen", "sliced", "strawberry", "chips"],
     "carrots": ["snack", "tray", "dip", "juice", "ranch", "celery", "broccoli", "medley", "blend", "peas"],
     "breaded_chicken": ["with", "mac", "sandwich", "buffalo", "wings", "wing", "bites", "fries", "popcorn", "dino"],
-    "milk_1pct": ["chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half"],
-    "milk_2pct": ["chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half", "cottage", "shredded", "mozzarella", "ricotta"],
-    "milk_whole": ["chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half", "cottage", "shredded", "mozzarella", "ricotta", "string"],
-    "milk_skim": ["chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half"],
+    "milk_1pct": ["ultra-filtered", "ultra", "filtered", "fit", "chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half"],
+    "milk_2pct": ["ultra-filtered", "ultra", "filtered", "fit", "chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half", "cottage", "shredded", "mozzarella", "ricotta"],
+    "milk_whole": ["ultra-filtered", "ultra", "filtered", "fit", "chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half", "cottage", "shredded", "mozzarella", "ricotta", "string"],
+    "milk_skim": ["ultra-filtered", "ultra", "filtered", "fit", "chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half"],
     "tilapia": ["breaded", "seasoned", "battered", "fillets-with", "stuffed"],
     "potatoes": ["canned", "15oz", "whole-white", "skins", "salad", "wedges", "fries", "tots", "mashed", "hash", "sweet", "chip", "au-gratin", "scalloped", "seasoned", "roasted", "diced", "shredded", "instant", "flakes", "baby", "fingerling", "red", "gold", "yukon", "medley", "sticks"],
     "peanut_butter": ["cups", "chocolate", "chip", "pretzel", "crackers", "filled", "jelly", "sandwich", "snack", "pouch", "powder", "uncrustables", "granola", "dog", "spread-crunchy"],
@@ -224,10 +224,10 @@ EXCLUDE = {
     "oranges": ["juice", "mandarin", "mandarins", "clementine", "clementines", "cuties", "halos", "tangerine", "tangerines", "soda", "chicken", "flavored", "cream", "peel", "zest", "chocolate", "dark", "blood", "cara", "drink", "slices", "cups", "gelatin", "sherbet", "extract", "marmalade", "vitamin"],
     "cucumbers": ["pickles", "pickle", "body", "face", "mask", "water", "salad", "melon", "mint", "dill", "spears", "chips", "seltzer", "sparkling", "tea"],
     "corn_canned": ["cream", "creamed", "tortilla", "tortillas", "bread", "muffin", "dog", "dogs", "flakes", "syrup", "starch", "oil", "pops", "cob", "frozen", "chips", "nuts", "meal", "cushions", "bbq", "cornbread", "popcorn", "husks", "flour", "masa", "candy", "salsa", "relish", "roasted", "fire", "mexican", "street", "black", "beans", "dip", "chowder", "peas"],
-    "chicken_breast": ["shredded", "premium", "nuggets", "patties", "patty", "strips", "tenders", "tenderloins", "breaded", "cooked", "grilled", "rotisserie", "chunk", "chunks", "pouch", "canned", "in-water", "sliced", "deli", "lunchmeat", "fajita", "seasoned", "marinated", "stuffed", "bacon", "wrapped", "cutlets", "thin", "diced", "fillets", "bites", "strips", "smoked", "oven-roasted", "buffalo", "cordon", "bone-in", "split", "with"],
+    "chicken_breast": ["ground", "shredded", "premium", "nuggets", "patties", "patty", "strips", "tenders", "tenderloins", "breaded", "cooked", "grilled", "rotisserie", "chunk", "chunks", "pouch", "canned", "in-water", "sliced", "deli", "lunchmeat", "fajita", "seasoned", "marinated", "stuffed", "bacon", "wrapped", "cutlets", "thin", "diced", "fillets", "bites", "strips", "smoked", "oven-roasted", "buffalo", "cordon", "bone-in", "split", "with"],
     "greek_yogurt": ["blackberry", "bottom", "strawberry", "vanilla", "blueberry", "peach", "cherry", "honey", "key-lime", "mixed-berry", "raspberry", "coconut", "mango", "fruit", "chocolate", "flip", "drink", "kids", "tube", "tubes", "pouch", "whole-milk", "2", "5", "low-fat", "lowfat", "black-cherry", "lemon", "pineapple", "banana", "caramel", "cookies", "crunch", "with", "less-sugar", "zero", "triple", "toffee", "apple", "cinnamon", "pumpkin"],
     "soy_milk": ["sauce", "chocolate", "vanilla", "creamer", "yogurt", "unsweet", "unsweetened", "light", "very", "shelf", "aseptic", "protein", "nog", "cheese"],
-    "watermelon": ["juice", "toothpaste", "body", "flavor", "flavored", "soda", "seltzer", "sparkling", "water", "chunks", "cubes", "spears", "cut", "seeds", "sour", "candy", "gum", "jolly", "rind", "lemonade", "popsicle", "ice", "energy", "drink", "gelatin", "jelly", "vape", "scented", "sugar"],
+    "watermelon": ["gel", "cup", "cups", "fruit", "juice", "toothpaste", "body", "flavor", "flavored", "soda", "seltzer", "sparkling", "water", "chunks", "cubes", "spears", "cut", "seeds", "sour", "candy", "gum", "jolly", "rind", "lemonade", "popsicle", "ice", "energy", "drink", "gelatin", "jelly", "vape", "scented", "sugar"],
     "rice_white": ["instant", "microwaveable", "ready", "cooked", "jasmine", "basmati", "brown", "wild", "cake", "cakes", "krispies", "chex", "pudding", "noodles", "vinegar", "flour", "paper", "cereal", "cup", "cups", "sushi", "arborio", "fried", "pilaf", "seasoned", "mix", "a-roni", "cracker", "crackers", "milk", "drink", "chicken", "beans", "vermicelli", "spanish", "mexican", "cilantro", "lime", "coconut", "thai", "calrose", "sticky", "medium", "short", "parboiled", "boil-in-bag", "boil", "bag"],
 }
 
@@ -270,6 +270,19 @@ def candidates_for(food, index):
     return out
 
 
+def save_cache(cache):
+    """Merge this process's pages into whatever is on disk, so concurrent runs never clobber."""
+    on_disk = json.load(open(PRICES)) if os.path.exists(PRICES) else {"pages": {}, "by_food": {}}
+    for k, v in cache["pages"].items():
+        if v.get("regular") or k not in on_disk["pages"]:
+            on_disk["pages"][k] = v
+    on_disk["by_food"].update(cache.get("by_food", {}))
+    cache["pages"] = on_disk["pages"]
+    tmp = PRICES + ".tmp"
+    json.dump(on_disk, open(tmp, "w"), indent=1)
+    os.replace(tmp, PRICES)
+
+
 def fetch_prices(only_food=None):
     basket = json.load(open(BASKET))
     index = load_index()
@@ -303,7 +316,7 @@ def fetch_prices(only_food=None):
                 pages[k] = rec
             n_new += 1
             if n_new % 10 == 0:
-                json.dump(cache, open(PRICES, "w"), indent=1)
+                save_cache(cache)
             time.sleep(0.5)
         priced = [p for k, p in pages.items() if p.get("regular") and p["upc"] in by_upc and p.get("location_id") in STORES]
         cache["by_food"][food["key"]] = sorted({p["upc"] for p in priced})

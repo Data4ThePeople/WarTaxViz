@@ -26,8 +26,28 @@ PRICES = os.path.join(ROOT, "data", "kroger", "wayback_prices.json")
 PRODUCTS = os.path.join(ROOT, "data", "kroger", "products.json")
 WAR = 20260227
 
-# Curated picks: food key -> list of UPCs (filled in by hand after reviewing the table).
-PICKS = {}
+# Curated picks: food key -> list of slots; each slot is a list of UPCs in preference
+# order (the first one with a priced baseline is used). Rule: Kroger label first, then a
+# national brand, then one more; plain forms only; premium lines and odd pack forms out.
+PICKS = {
+    "wheat_bread": [["0001111008450"], ["0007225003712", "0007294561307"], ["0001111008489"]],
+    "apples": [["0001111018187"], ["0001111018188"], ["0001111091825"]],
+    "carrots": [["0001111091622"], ["0001111091620"]],
+    "breaded_chicken": [["0001111015931"], ["0002370006026"], ["0002370006022", "0002370006025"]],
+    "tilapia": [["0001111086003"], ["0001111062160"], ["0001111064632"]],
+    "peanut_butter": [["0001111009853"], ["0005150024177", "0005150072001"], ["0001111001619"]],
+    "broccoli_frozen": [["0001111079549"], ["0001111085669"]],
+    "orange_juice": [["0001111014350"], ["0002500004496", "0002500004789"], ["0002500004786"]],
+    "tuna": [["0001111083444"], ["0004800000245"], ["0001111089084"]],
+    "eggs": [["0001111060903"], ["0001111060933"]],
+    "milk_2pct": [["0001111041700"]],
+    "drumsticks": [["0001111063825"], ["0024071850000"]],
+    "pinto_beans": [["0001111072565"]],
+    "pork": [["0025338300000"]],
+    "oranges": [["0001111091836"], ["0001111090032"]],
+    "corn_canned": [["0001111011383"], ["0002400016302", "0002400003171"], ["0001111011370"]],
+    "black_beans": [["0001111072567"], ["0001111089687"]],
+}
 
 
 def best_capture(recs):
@@ -80,7 +100,11 @@ def freeze(cands):
         _, rows = cands[food["key"]]
         by_upc = {r["upc"]: r for r in rows}
         prods = []
-        for upc in picks:
+        for slot in picks:
+            upc = next((u for u in slot if u in by_upc), None)
+            if upc is None:
+                print("  ! %s: no priced baseline for any of %s" % (food["key"], slot))
+                continue
             r = by_upc[upc]
             prods.append(dict(upc=upc, name=r["name"], brand=r["brand"], size=r["size"], sell_by=r["sell_by"],
                               weight_lb=r["weight_lb"], location_id=r["location_id"],

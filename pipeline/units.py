@@ -49,11 +49,22 @@ def size_to_lbs(size, food_key, weight_lb=None):
 
 
 def unit_price_per_lb(regular, size, food_key, sell_by=None, weight_lb=None):
-    """Price per pound for a product. Sold-by-weight items are already $/lb."""
+    """Price per pound for a product. Sold-by-weight items are already $/lb.
+
+    Kroger's page weight is the net weight for packaged goods but a 1.0 placeholder for
+    loose produce sold by the each, so a bare "1 each" / "1 ct" with weight 1.0 is
+    treated as unknown rather than priced at $/lb."""
     if regular is None:
         return None
     if sell_by and sell_by.upper() == "WEIGHT":
         return regular
+    s = (size or "").lower().strip()
+    bare_unit = re.fullmatch(r"1\s*(each|ea|ct|count|lb|lbs?)", s) is not None or s == ""
+    if bare_unit:
+        if weight_lb and abs(weight_lb - 1.0) > 1e-6:
+            return regular / weight_lb   # real net weight overrides a nominal "1 lb" / "1 each"
+        if s.endswith(("each", "ea", "ct", "count")) or s == "":
+            return None
     lbs = size_to_lbs(size, food_key, weight_lb)
     if not lbs:
         return None
