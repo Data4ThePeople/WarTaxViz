@@ -29,7 +29,9 @@ load_dotenv(os.path.expanduser("~/.claude/d4tp-process/.env"))
 PRODUCTS = os.path.join(ROOT, "data", "kroger", "products.json")
 SNAPSHOTS = os.path.join(ROOT, "data", "kroger", "snapshots")
 API = "https://api.kroger.com/v1"
-ANCHOR_LOCATION = "02900310"   # Kroger #310, 1790 E Market St, Harrisonburg VA
+ANCHOR_LOCATION = "02900310"   # Kroger #310, 1790 E Market St, Harrisonburg VA (default for searches)
+# each frozen product carries the location_id its pre-war baseline was archived at; prices
+# are always fetched from that same store
 UA = "Data4ThePeople WarTax (eric@asaltollc.com)"
 
 
@@ -84,16 +86,18 @@ def lookup(tok, upc, location=ANCHOR_LOCATION):
 def snapshot(tok):
     products = json.load(open(PRODUCTS))
     today = date.today().isoformat()
-    out = {"date": today, "location_id": ANCHOR_LOCATION, "source": "Kroger Products API v1", "prices": {}}
+    out = {"date": today, "source": "Kroger Products API v1", "prices": {}}
     missing = []
     for food in products["foods"]:
         for prod in food["products"]:
-            rec = lookup(tok, prod["upc"])
+            loc = prod.get("location_id") or ANCHOR_LOCATION
+            rec = lookup(tok, prod["upc"], loc)
             if rec is None or rec["regular"] is None:
                 missing.append((food["key"], prod["upc"], prod.get("name")))
-                out["prices"][prod["upc"]] = {"regular": None, "promo": None, "size": None, "food": food["key"]}
+                out["prices"][prod["upc"]] = {"regular": None, "promo": None, "size": None, "food": food["key"], "location_id": loc}
             else:
                 rec["food"] = food["key"]
+                rec["location_id"] = loc
                 out["prices"][prod["upc"]] = rec
             print("%-26s %-13s %-52s %s" % (food["key"], prod["upc"], (rec or {}).get("name") or prod.get("name"),
                                             "$%.2f" % rec["regular"] if rec and rec["regular"] is not None else "NO PRICE"))
@@ -119,7 +123,8 @@ def main():
     a = ap.parse_args()
     tok = token()
     if a.location:
-        print(json.dumps(get(tok, "/locations/" + ANCHOR_LOCATION), indent=1))
+        for loc in ("02900310", "02900334"):
+            print(json.dumps(get(tok, "/locations/" + loc), indent=1))
         return 0
     if a.search:
         for r in search(tok, a.search, a.limit):

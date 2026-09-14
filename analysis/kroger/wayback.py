@@ -31,6 +31,12 @@ PRICES = os.path.join(ROOT, "data", "kroger", "wayback_prices.json")
 
 UA = {"User-Agent": "Data4ThePeople research (eric@asaltollc.com)"}
 CDX = "http://web.archive.org/cdx/search/cdx"
+# Stores the archive crawler priced at. Captures before about 2026-01-10 used Rio Hill;
+# later ones used Harrisonburg. Every product keeps the store its baseline came from.
+STORES = {
+    "02900310": "Kroger #310, 1790 E Market St, Harrisonburg, VA 22801",
+    "02900334": "Kroger #334 Rio Hill, 1980 Rio Hill Ctr, Charlottesville, VA 22901",
+}
 ANCHOR_LOCATION = "02900310"
 WAR_START = "20260227"
 # Baseline window: Dec 1 2025 .. Feb 26 2026 (pre-war); fallback Feb 27 .. Mar 13 (early war)
@@ -164,29 +170,102 @@ def parse_page(html):
 
 
 def fetch_archived(ts, url):
+    """Raw archived page, "" if the archive has no such capture, None if it could not be reached."""
     wb = "http://web.archive.org/web/%sid_/%s" % (ts, url)
-    for attempt in range(3):
+    for attempt in range(6):
+        status, wait = "error", 10 * (2 ** attempt)
         try:
             r = requests.get(wb, headers=UA, timeout=120)
             if r.status_code == 200:
                 return r.text
             if r.status_code == 404:
                 return ""
+            status = r.status_code
+            wait = int(r.headers.get("Retry-After", 0) or 0) or wait
         except requests.RequestException:
             pass
-        time.sleep(4 * (attempt + 1))
+        print("  archive %s on %s, waiting %ds" % (status, url[-40:], wait), flush=True)
+        time.sleep(min(wait, 600))
     return None
 
 
+# Slug tokens that disqualify a candidate, globally and per food. The basket wants the
+# plain form of each food (large white eggs, plain nonfat Greek yogurt, canned light tuna
+# in water), not flavored, prepared, premium or non-food look-alikes.
+EXCLUDE_ALL = ["organic", "cat", "dog", "kitten", "puppy", "treats", "candle", "scented", "scent",
+               "lotion", "shampoo", "wash", "soap", "gummies", "candy", "toothpaste", "bar", "bars",
+               "cereal", "cookie", "cookies", "seasoning", "meal", "dinner", "bowl", "kit", "soup",
+               "chips", "ice-cream", "pudding", "muffin", "muffins", "cake", "pie", "protein", "smoothie"]
+EXCLUDE = {
+    "apples": ["sauce", "applesauce", "juice", "cider", "butter", "cinnamon", "dried", "caramel", "pouch", "pouches", "chip", "fritter"],
+    "bananas": ["bread", "cream", "split", "nut", "flavored", "flavor", "instant", "dried", "plantain", "pepper", "peppers", "blueberry", "fruit", "frozen", "sliced", "strawberry", "chips"],
+    "carrots": ["snack", "tray", "dip", "juice", "ranch", "celery", "broccoli", "medley", "blend", "peas"],
+    "breaded_chicken": ["with", "mac", "sandwich", "buffalo", "wings", "wing", "bites", "fries", "popcorn", "dino"],
+    "milk_1pct": ["chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half"],
+    "milk_2pct": ["chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half", "cottage", "shredded", "mozzarella", "ricotta"],
+    "milk_whole": ["chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half", "cottage", "shredded", "mozzarella", "ricotta", "string"],
+    "milk_skim": ["chocolate", "lactose", "yogurt", "cheese", "shake", "creamer", "evaporated", "condensed", "powder", "dry", "almond", "oat", "coconut", "strawberry", "vanilla", "half"],
+    "tilapia": ["breaded", "seasoned", "battered", "fillets-with", "stuffed"],
+    "potatoes": ["canned", "15oz", "whole-white", "skins", "salad", "wedges", "fries", "tots", "mashed", "hash", "sweet", "chip", "au-gratin", "scalloped", "seasoned", "roasted", "diced", "shredded", "instant", "flakes", "baby", "fingerling", "red", "gold", "yukon", "medley", "sticks"],
+    "peanut_butter": ["cups", "chocolate", "chip", "pretzel", "crackers", "filled", "jelly", "sandwich", "snack", "pouch", "powder", "uncrustables", "granola", "dog", "spread-crunchy"],
+    "broccoli_frozen": ["cheese", "sauce", "rice", "chicken", "stuffed", "coleslaw", "slaw", "tray", "dip", "cauliflower", "carrots", "stir-fry", "medley", "blend", "mix", "crowns", "salad", "tots", "bites"],
+    "orange_juice": ["mango", "pineapple", "strawberry", "carrot", "cocktail", "drink", "soda", "sparkling", "vitamin", "cold-pressed", "frozen", "concentrate", "punch", "banana", "peach", "blend", "probiotic", "light"],
+    "tuna": ["salad", "pouch", "creations", "sandwich", "flavored", "lunch", "ahi", "steak", "sushi", "poke", "oil", "albacore", "white", "solid", "yellowfin", "lemon", "pepper", "helper", "noodle"],
+    "eggs": ["chocolate", "rolls", "roll", "whites", "liquid", "boiled", "substitute", "beaters", "pasture", "cage-free", "brown", "medium", "jumbo", "extra-large", "x-large", "omega", "nog", "bites", "noodles", "salad", "pickled"],
+    "tomatoes": ["passata", "puree", "diced", "paste", "sauce", "ketchup", "sun-dried", "juice", "crushed", "stewed", "peeled", "fire-roasted", "pizza", "salsa", "cherry", "grape", "green", "canned", "chilies", "basil", "soup", "cocktail", "roasted", "pasta"],
+    "drumsticks": ["turkey", "buffalo", "bbq", "seasoned", "cooked", "fried", "ice", "cream"],
+    "lettuce": ["salad-kit", "romaine", "hearts", "leaf", "butter", "spring", "mix", "wrap", "wraps", "chopped-salad", "salad-mix", "salad"],
+    "pinto_beans": ["refried", "dip", "seasoned", "chili", "salsa", "flavored", "bacon", "jalapeno"],
+    "black_beans": ["refried", "dip", "seasoned", "chili", "salsa", "flavored", "burger", "burgers", "corn", "rice", "soup", "salad"],
+    "pork": ["rinds", "pulled", "bbq", "sauce", "chops", "chop", "bacon", "sausage", "ground", "rib", "ribs", "cooked", "smoked", "tenderloin", "coating", "seasoned", "belly", "cutlets", "bites", "chicharrones", "carnitas", "sliders"],
+    "white_bread": ["hot-dog", "hamburger", "buns", "rolls", "bagel", "bagels", "crumbs", "stuffing", "cubes", "french", "italian", "texas", "toast", "sourdough", "garlic", "dough", "mix", "flour", "sub", "hoagie", "pizza", "chocolate", "cheddar"],
+    "wheat_bread": ["hot-dog", "hamburger", "buns", "rolls", "bagel", "bagels", "crumbs", "stuffing", "cubes", "french", "italian", "texas", "toast", "sourdough", "garlic", "dough", "mix", "flour", "sub", "hoagie", "pizza", "low-sodium", "thin", "thins", "tortilla", "tortillas", "pita", "english", "keto", "sprouted"],
+    "quinoa": ["salad", "blend", "rice", "pasta", "flour", "cooked", "microwaveable", "ready", "crisps", "puffs", "chips", "granola", "with"],
+    "oranges": ["juice", "mandarin", "mandarins", "clementine", "clementines", "cuties", "halos", "tangerine", "tangerines", "soda", "chicken", "flavored", "cream", "peel", "zest", "chocolate", "dark", "blood", "cara", "drink", "slices", "cups", "gelatin", "sherbet", "extract", "marmalade", "vitamin"],
+    "cucumbers": ["pickles", "pickle", "body", "face", "mask", "water", "salad", "melon", "mint", "dill", "spears", "chips", "seltzer", "sparkling", "tea"],
+    "corn_canned": ["cream", "creamed", "tortilla", "tortillas", "bread", "muffin", "dog", "dogs", "flakes", "syrup", "starch", "oil", "pops", "cob", "frozen", "chips", "nuts", "meal", "cushions", "bbq", "cornbread", "popcorn", "husks", "flour", "masa", "candy", "salsa", "relish", "roasted", "fire", "mexican", "street", "black", "beans", "dip", "chowder", "peas"],
+    "chicken_breast": ["shredded", "premium", "nuggets", "patties", "patty", "strips", "tenders", "tenderloins", "breaded", "cooked", "grilled", "rotisserie", "chunk", "chunks", "pouch", "canned", "in-water", "sliced", "deli", "lunchmeat", "fajita", "seasoned", "marinated", "stuffed", "bacon", "wrapped", "cutlets", "thin", "diced", "fillets", "bites", "strips", "smoked", "oven-roasted", "buffalo", "cordon", "bone-in", "split", "with"],
+    "greek_yogurt": ["blackberry", "bottom", "strawberry", "vanilla", "blueberry", "peach", "cherry", "honey", "key-lime", "mixed-berry", "raspberry", "coconut", "mango", "fruit", "chocolate", "flip", "drink", "kids", "tube", "tubes", "pouch", "whole-milk", "2", "5", "low-fat", "lowfat", "black-cherry", "lemon", "pineapple", "banana", "caramel", "cookies", "crunch", "with", "less-sugar", "zero", "triple", "toffee", "apple", "cinnamon", "pumpkin"],
+    "soy_milk": ["sauce", "chocolate", "vanilla", "creamer", "yogurt", "unsweet", "unsweetened", "light", "very", "shelf", "aseptic", "protein", "nog", "cheese"],
+    "watermelon": ["juice", "toothpaste", "body", "flavor", "flavored", "soda", "seltzer", "sparkling", "water", "chunks", "cubes", "spears", "cut", "seeds", "sour", "candy", "gum", "jolly", "rind", "lemonade", "popsicle", "ice", "energy", "drink", "gelatin", "jelly", "vape", "scented", "sugar"],
+    "rice_white": ["instant", "microwaveable", "ready", "cooked", "jasmine", "basmati", "brown", "wild", "cake", "cakes", "krispies", "chex", "pudding", "noodles", "vinegar", "flour", "paper", "cereal", "cup", "cups", "sushi", "arborio", "fried", "pilaf", "seasoned", "mix", "a-roni", "cracker", "crackers", "milk", "drink", "chicken", "beans", "vermicelli", "spanish", "mexican", "cilantro", "lime", "coconut", "thai", "calrose", "sticky", "medium", "short", "parboiled", "boil-in-bag", "boil", "bag"],
+}
+
+
+# Products admitted by hand despite the exclusion rules (e.g. Silk's plain soy milk is only
+# sold as organic). Food key -> UPCs.
+ALLOW = {
+    "soy_milk": ["0002529360023"],   # Silk Organic Unsweetened Plain Soy Milk, half gallon
+}
+
+
+def _contains_seq(tokens, phrase):
+    ph = phrase.split("-")
+    n = len(ph)
+    return any(tokens[i:i + n] == ph for i in range(len(tokens) - n + 1))
+
+
+def slug_matches(food, slug, upc=None):
+    if upc and upc in ALLOW.get(food["key"], []):
+        return True
+    tokens = slug.split("-")
+    if not any(_contains_seq(tokens, t) for t in food["terms"]):
+        return False
+    for ex in EXCLUDE_ALL + EXCLUDE.get(food["key"], []):
+        if _contains_seq(tokens, ex):
+            return False
+    return True
+
+
 def candidates_for(food, index):
-    """Archived (ts, url, upc) rows whose slug contains one of the food's search terms."""
+    """Archived (ts, url, upc, slug) rows whose slug names the food's plain form."""
     out = []
     for slug, ts, url in index:
         m = UPC_RE.search(url)
         if not m:
             continue
         name = m.group(1)
-        if any(t in name for t in food["terms"]):
+        if slug_matches(food, name, m.group(2)):
             out.append((ts, url.split("?")[0], m.group(2), name))
     return out
 
@@ -207,7 +286,7 @@ def fetch_prices(only_food=None):
         keys = []
         for upc, snaps in by_upc.items():
             snaps.sort(key=lambda s: abs(int(s[0][:8]) - int(WAR_START)))
-            for ts, url, name in snaps[:4]:
+            for ts, url, name in snaps[:2]:
                 keys.append((upc, ts, url, name))
         n_new = 0
         for upc, ts, url, name in keys:
@@ -216,7 +295,8 @@ def fetch_prices(only_food=None):
                 continue
             html = fetch_archived(ts, url)
             if html is None:
-                pages[k] = {"upc": upc, "ts": ts, "url": url, "slug": name, "error": "fetch failed"}
+                print("  ! giving up on %s for now" % k, flush=True)
+                continue
             else:
                 rec = parse_page(html) or {}
                 rec.update(upc=upc, ts=ts, url=url, slug=name, archive_url="http://web.archive.org/web/%s/%s" % (ts, url))
@@ -225,10 +305,10 @@ def fetch_prices(only_food=None):
             if n_new % 10 == 0:
                 json.dump(cache, open(PRICES, "w"), indent=1)
             time.sleep(0.5)
-        priced = [p for k, p in pages.items() if p.get("regular") and p["upc"] in by_upc and p.get("location_id") == ANCHOR_LOCATION]
+        priced = [p for k, p in pages.items() if p.get("regular") and p["upc"] in by_upc and p.get("location_id") in STORES]
         cache["by_food"][food["key"]] = sorted({p["upc"] for p in priced})
         print("%-28s candidates %3d UPCs / %3d snapshots, priced UPCs %2d"
-              % (food["name"], len(by_upc), len(keys), len(cache["by_food"][food["key"]])))
+              % (food["name"], len(by_upc), len(keys), len(cache["by_food"][food["key"]])), flush=True)
         json.dump(cache, open(PRICES, "w"), indent=1)
 
 

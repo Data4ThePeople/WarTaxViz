@@ -28,7 +28,7 @@ load_dotenv(os.path.expanduser("~/.claude/d4tp-process/.env"))
 
 import fetch_bls
 from constants import CEX_FOOD_AT_HOME_ANNUAL, WAR_START
-from units import unit_price_per_lb
+import food_kroger  # pipeline/food_kroger.py
 
 BASKET = os.path.join(ROOT, "data", "kroger", "basket.json")
 PRODUCTS = os.path.join(ROOT, "data", "kroger", "products.json")
@@ -77,30 +77,6 @@ def load_now(path):
     return json.load(open(path)), path
 
 
-def price_food(food, prod_food, now_prices):
-    rows, pre_prices, now_prices_lb = [], [], []
-    for p in prod_food["products"]:
-        base = p["baseline"]
-        pre = unit_price_per_lb(base["regular"], p.get("size"), food["key"], p.get("sell_by"), p.get("weight_lb"))
-        cur = now_prices.get(p["upc"]) or {}
-        cur_size = cur.get("size") or p.get("size")
-        cur_sell = cur.get("sold_by") or cur.get("sell_by") or p.get("sell_by")
-        now = unit_price_per_lb(cur.get("regular"), cur_size, food["key"], cur_sell, p.get("weight_lb"))
-        rows.append(dict(upc=p["upc"], name=p.get("name"), size=p.get("size"), pre_reg=base["regular"], now_reg=cur.get("regular"),
-                         pre_lb=pre, now_lb=now, baseline_date=base["ts"][:8], early_war=base.get("early_war", False),
-                         now_promo=cur.get("promo")))
-        if pre is not None and now is not None:
-            pre_prices.append(pre); now_prices_lb.append(now)
-    n = len(pre_prices)
-    if n == 0:
-        return None
-    avg_pre, avg_now = sum(pre_prices) / n, sum(now_prices_lb) / n
-    return dict(key=food["key"], name=food["name"], lbs=food["lbs_week"], n=n, products=rows,
-                avg_pre=avg_pre, avg_now=avg_now, pct=avg_now / avg_pre - 1,
-                cost_pre=food["lbs_week"] * avg_pre, cost_now=food["lbs_week"] * avg_now,
-                tfp_share=food["tfp_share"])
-
-
 def fmt_pct(x):
     return ("+" if x >= 0 else "−") + "%.1f%%" % abs(x * 100)
 
@@ -117,16 +93,16 @@ def main():
     site = json.load(open(SITE_DATA))
     prod_by_key = {f["key"]: f for f in products["foods"]}
 
-    foods = []
-    for food in basket["foods"]:
-        pf = prod_by_key.get(food["key"])
-        if not pf or not pf["products"]:
-            continue
-        r = price_food(food, pf, now_prices)
-        if r:
-            foods.append(r)
-    cost_pre = sum(f["cost_pre"] for f in foods)
-    cost_now = sum(f["cost_now"] for f in foods)
+    # products.json carries lbs_week and tfp_share per food (copied from basket.json when frozen)
+    cost_pre, cost_now, items = food_kroger.basket_at(products, now_prices)
+    foods = [dict(key=it["key"], name=it["name"], lbs=it["lbs_week"], n=it["n_products"],
+                  avg_pre=it["price_lb_prewar"], avg_now=it["price_lb_now"], pct=it["pct"] / 100.0,
+                  cost_pre=it["cost_week_prewar"], cost_now=it["cost_week_now"], tfp_share=it["tfp_share"] or 0,
+                  products=[dict(upc=p["upc"], name=p["name"], size=next((q.get("size") for q in prod_by_key[it["key"]]["products"] if q["upc"] == p["upc"]), None),
+                                 pre_reg=p["pre_regular"], now_reg=p["now_regular"], pre_lb=p["pre_lb"], now_lb=p["now_lb"],
+                                 baseline_date=p["baseline_date"], early_war=p["early_war"], now_promo=p["now_promo"])
+                            for p in it["products"]])
+             for it in items]
     pct = cost_now / cost_pre - 1
     covered_share = sum(f["tfp_share"] for f in foods)
     base_dates = sorted(p["baseline_date"] for f in foods for p in f["products"] if p["pre_lb"] is not None)
