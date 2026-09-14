@@ -1,0 +1,846 @@
+{
+ "frozen_on": "2026-09-14",
+ "stores": {
+  "02900310": "Kroger #310, 1790 E Market St, Harrisonburg, VA 22801",
+  "02900334": "Kroger #334 Rio Hill, 1980 Rio Hill Ctr, Charlottesville, VA 22901"
+ },
+ "store": {
+  "location_id": "02900310",
+  "name": "Kroger #310, 1790 E Market St, Harrisonburg, VA 22801"
+ },
+ "rule": "Up to three products per food: Kroger label, a national brand, one more; regular shelf price; same UPC at both dates, at the store the baseline was archived from",
+ "foods": [
+  {
+   "key": "wheat_bread",
+   "name": "Whole wheat bread",
+   "lbs_week": 5.5993,
+   "tfp_share": 0.0623,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111008450",
+     "name": "Kroger\u00ae Soft Wheat Bread, 20 oz",
+     "brand": "Kroger",
+     "size": "20 oz",
+     "sell_by": null,
+     "weight_lb": 1.25,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 1.99,
+      "promo": null,
+      "ts": "20260123083537",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260123083537/https://www.kroger.com/p/kroger-soft-wheat-bread/0001111008450"
+     }
+    },
+    {
+     "upc": "0007225003712",
+     "name": "Nature's Own 100% Whole Wheat Bread, 20 oz",
+     "brand": "Nature's Own",
+     "size": "20 oz",
+     "sell_by": null,
+     "weight_lb": 1.25,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 4.49,
+      "promo": null,
+      "ts": "20260214043907",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260214043907/https://www.kroger.com/p/nature-s-own-100-whole-wheat-bread/0007225003712"
+     }
+    },
+    {
+     "upc": "0001111008489",
+     "name": "Private Selection\u00ae 100% Whole Wheat Bread Wide Pan, 24 oz",
+     "brand": "Private Selection",
+     "size": "24 oz",
+     "sell_by": null,
+     "weight_lb": 1.5,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 2.99,
+      "promo": null,
+      "ts": "20251208224213",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251208224213/https://www.kroger.com/p/private-selection-100-whole-wheat-bread-wide-pan/0001111008489"
+     }
+    }
+   ]
+  },
+  {
+   "key": "apples",
+   "name": "Apples",
+   "lbs_week": 4.4592,
+   "tfp_share": 0.0411,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111018187",
+     "name": "Kroger\u00ae Gala Apples \u2013 5 Pound Bag, 5 lb",
+     "brand": "Kroger",
+     "size": "5 lb",
+     "sell_by": "UNIT",
+     "weight_lb": 5.0,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 5.0,
+      "promo": null,
+      "ts": "20260113205804",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260113205804/https://www.kroger.com/p/kroger-gala-apples-5-pound-bag/0001111018187"
+     }
+    },
+    {
+     "upc": "0001111018188",
+     "name": "Kroger\u00ae Fuji Apples \u2013 3 Pound Bag, 3 lb",
+     "brand": "Kroger",
+     "size": "3 lb",
+     "sell_by": null,
+     "weight_lb": 3.0,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 3.99,
+      "promo": null,
+      "ts": "20260216090141",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260216090141/https://www.kroger.com/p/kroger-fuji-apples-3-pound-bag/0001111018188"
+     }
+    },
+    {
+     "upc": "0001111091825",
+     "name": "Kroger\u00ae Gala Apples \u2013 3 Pound Bag, 3 lb",
+     "brand": "Kroger",
+     "size": "3 lb",
+     "sell_by": null,
+     "weight_lb": 3.0,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 3.99,
+      "promo": null,
+      "ts": "20260215092549",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260215092549/https://www.kroger.com/p/kroger-gala-apples-3-pound-bag/0001111091825"
+     }
+    }
+   ]
+  },
+  {
+   "key": "carrots",
+   "name": "Carrots",
+   "lbs_week": 5.2784,
+   "tfp_share": 0.0393,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111091622",
+     "name": "Kroger\u00ae Whole Carrots Bag, 2 lb",
+     "brand": "Kroger",
+     "size": "2 lb",
+     "sell_by": null,
+     "weight_lb": null,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 2.29,
+      "promo": null,
+      "ts": "20251212102159",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251212102159/https://www.kroger.com/p/kroger-whole-carrots-bag/0001111091622"
+     }
+    },
+    {
+     "upc": "0001111091620",
+     "name": "Kroger\u00ae Peeled Baby Carrots Bag, 16 oz",
+     "brand": "Kroger",
+     "size": "16 oz",
+     "sell_by": null,
+     "weight_lb": 1.0,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 1.29,
+      "promo": null,
+      "ts": "20260123080240",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260123080240/https://www.kroger.com/p/kroger-cut-peeled-baby-carrots/0001111091620"
+     }
+    }
+   ]
+  },
+  {
+   "key": "breaded_chicken",
+   "name": "Frozen breaded chicken",
+   "lbs_week": 3.6499,
+   "tfp_share": 0.0608,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111015931",
+     "name": "Kroger\u00ae Crispy Chicken Strips, 25 oz",
+     "brand": null,
+     "size": "25 oz",
+     "sell_by": null,
+     "weight_lb": 1.56,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 7.99,
+      "promo": null,
+      "ts": "20260310034513",
+      "early_war": true,
+      "archive_url": "http://web.archive.org/web/20260310034513/https://www.kroger.com/p/kroger-crispy-chicken-strips/0001111015931"
+     }
+    },
+    {
+     "upc": "0002370006026",
+     "name": "Tyson Frozen Chicken Nuggets, 29 oz",
+     "brand": "Tyson",
+     "size": "29 oz",
+     "sell_by": null,
+     "weight_lb": 1.81,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 6.99,
+      "promo": null,
+      "ts": "20260210185220",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260210185220/https://www.kroger.com/p/tyson-frozen-chicken-nuggets/0002370006026"
+     }
+    },
+    {
+     "upc": "0002370006022",
+     "name": "Tyson Frozen Chicken Patties Family Pack, 3.37 lb",
+     "brand": "Tyson",
+     "size": "3.37 lb",
+     "sell_by": null,
+     "weight_lb": 3.37,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 13.99,
+      "promo": null,
+      "ts": "20260216171540",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260216171540/https://www.kroger.com/p/tyson-frozen-chicken-patties-family-pack/0002370006022"
+     }
+    }
+   ]
+  },
+  {
+   "key": "milk_1pct",
+   "name": "Milk, 1%",
+   "lbs_week": 13.6345,
+   "tfp_share": 0.0322,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "tilapia",
+   "name": "Tilapia fillets",
+   "lbs_week": 1.3758,
+   "tfp_share": 0.0316,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111086003",
+     "name": "Kroger\u00ae Boneless & Skinless Tilapia, 2 lb",
+     "brand": "Kroger",
+     "size": "2 lb",
+     "sell_by": null,
+     "weight_lb": 2.0,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 10.0,
+      "promo": null,
+      "ts": "20260306060130",
+      "early_war": true,
+      "archive_url": "http://web.archive.org/web/20260306060130/https://www.kroger.com/p/kroger-boneless-skinless-tilapia/0001111086003"
+     }
+    },
+    {
+     "upc": "0001111062160",
+     "name": "Kroger\u00ae Fresh Farm Raised Tilapia Fillets, 8 ounces",
+     "brand": "Kroger",
+     "size": "8 ounces",
+     "sell_by": null,
+     "weight_lb": 0.5,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 5.0,
+      "promo": null,
+      "ts": "20251213074926",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251213074926/https://www.kroger.com/p/kroger-fresh-farm-raised-tilapia-fillets/0001111062160"
+     }
+    },
+    {
+     "upc": "0001111064632",
+     "name": "Simple Truth\u00ae Farmed Raised Tilapia Loins, 12 oz",
+     "brand": "Simple Truth",
+     "size": "12 oz",
+     "sell_by": null,
+     "weight_lb": 0.75,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 7.99,
+      "promo": null,
+      "ts": "20260215234606",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260215234606/https://www.kroger.com/p/simple-truth-farmed-raised-tilapia-loins/0001111064632"
+     }
+    }
+   ]
+  },
+  {
+   "key": "potatoes",
+   "name": "Potatoes",
+   "lbs_week": 6.3983,
+   "tfp_share": 0.0248,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "peanut_butter",
+   "name": "Peanut butter",
+   "lbs_week": 1.8992,
+   "tfp_share": 0.0235,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111009853",
+     "name": "Kroger\u00ae Creamy Peanut Butter, 40 oz",
+     "brand": "Kroger",
+     "size": "40 oz",
+     "sell_by": null,
+     "weight_lb": 2.5,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 4.99,
+      "promo": null,
+      "ts": "20260213215149",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260213215149/https://www.kroger.com/p/kroger-creamy-peanut-butter/0001111009853"
+     }
+    },
+    {
+     "upc": "0005150024177",
+     "name": "Jif Creamy Peanut Butter, 28 oz",
+     "brand": "Jif",
+     "size": "28 oz",
+     "sell_by": null,
+     "weight_lb": 1.75,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 5.49,
+      "promo": null,
+      "ts": "20260116135130",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260116135130/https://www.kroger.com/p/jif-creamy-peanut-butter/0005150024177"
+     }
+    },
+    {
+     "upc": "0001111001619",
+     "name": "Kroger\u00ae Crunchy Peanut Butter, 16 oz",
+     "brand": "Kroger",
+     "size": "16 oz",
+     "sell_by": null,
+     "weight_lb": 1.0,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 2.19,
+      "promo": null,
+      "ts": "20251205185515",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251205185515/https://www.kroger.com/p/kroger-crunchy-peanut-butter/0001111001619"
+     }
+    }
+   ]
+  },
+  {
+   "key": "broccoli_frozen",
+   "name": "Broccoli, frozen",
+   "lbs_week": 2.1301,
+   "tfp_share": 0.0233,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111079549",
+     "name": "Kroger\u00ae Broccoli Florets BIG DEAL!, 32 oz",
+     "brand": "Kroger",
+     "size": "32 oz",
+     "sell_by": null,
+     "weight_lb": 2.0,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 6.0,
+      "promo": null,
+      "ts": "20260311110402",
+      "early_war": true,
+      "archive_url": "http://web.archive.org/web/20260311110402/https://www.kroger.com/p/kroger-broccoli-florets-big-deal-/0001111079549"
+     }
+    },
+    {
+     "upc": "0001111085669",
+     "name": "Private Selection\u00ae Frozen Broccoli Florets Handpicked, 16 oz",
+     "brand": "Private Selection",
+     "size": "16 oz",
+     "sell_by": null,
+     "weight_lb": 1.0,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 4.99,
+      "promo": null,
+      "ts": "20260307181341",
+      "early_war": true,
+      "archive_url": "http://web.archive.org/web/20260307181341/https://www.kroger.com/p/private-selection-frozen-broccoli-florets-handpicked/0001111085669"
+     }
+    }
+   ]
+  },
+  {
+   "key": "orange_juice",
+   "name": "Orange juice",
+   "lbs_week": 5.1274,
+   "tfp_share": 0.0223,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111014350",
+     "name": "Kroger Homestyle With Pulp 100% Orange Juice, 52 fl oz",
+     "brand": "Kroger",
+     "size": "52 fl oz",
+     "sell_by": null,
+     "weight_lb": 3.55,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 4.49,
+      "promo": null,
+      "ts": "20251212225532",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251212225532/https://www.kroger.com/p/kroger-homestyle-with-pulp-100-orange-juice/0001111014350"
+     }
+    }
+   ]
+  },
+  {
+   "key": "milk_skim",
+   "name": "Milk, skim",
+   "lbs_week": 8.1974,
+   "tfp_share": 0.0201,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "tuna",
+   "name": "Tuna, canned light",
+   "lbs_week": 0.9017,
+   "tfp_share": 0.02,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111083444",
+     "name": "Kroger\u00ae Wild Caught Chunk Light Tuna in Water, 12 oz",
+     "brand": "Kroger",
+     "size": "12 oz",
+     "sell_by": null,
+     "weight_lb": 0.75,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 2.29,
+      "promo": null,
+      "ts": "20260217231357",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260217231357/https://www.kroger.com/p/kroger-wild-caught-chunk-light-tuna-in-water/0001111083444"
+     }
+    },
+    {
+     "upc": "0004800000245",
+     "name": "Chicken of the Sea Chunk Light Tuna In Water, 5 oz",
+     "brand": "Chicken of the Sea",
+     "size": "5 oz",
+     "sell_by": null,
+     "weight_lb": 0.31,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 1.39,
+      "promo": null,
+      "ts": "20260311220656",
+      "early_war": true,
+      "archive_url": "http://web.archive.org/web/20260311220656/https://www.kroger.com/p/chicken-of-the-sea-chunk-light-tuna-in-water/0004800000245"
+     }
+    },
+    {
+     "upc": "0001111089084",
+     "name": "Kroger\u00ae Wild Caught Chunk Light Tuna in Water, 5 oz",
+     "brand": "Kroger",
+     "size": "5 oz",
+     "sell_by": null,
+     "weight_lb": 0.31,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 1.0,
+      "promo": null,
+      "ts": "20251205210612",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251205210612/https://www.kroger.com/p/kroger-wild-caught-chunk-light-tuna-in-water/0001111089084"
+     }
+    }
+   ]
+  },
+  {
+   "key": "bananas",
+   "name": "Bananas",
+   "lbs_week": 5.9749,
+   "tfp_share": 0.0189,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "eggs",
+   "name": "Eggs, large",
+   "lbs_week": 2.1228,
+   "tfp_share": 0.0173,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111060903",
+     "name": "Kroger\u00ae Grade A Large Eggs, 12 ct",
+     "brand": "Kroger",
+     "size": "12 ct",
+     "sell_by": null,
+     "weight_lb": 0.13,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 2.89,
+      "promo": null,
+      "ts": "20251216060746",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251216060746/https://www.kroger.com/p/kroger-grade-a-large-eggs/0001111060903"
+     }
+    },
+    {
+     "upc": "0001111060933",
+     "name": "Kroger\u00ae Grade A Large White Eggs, 18 ct",
+     "brand": "Kroger",
+     "size": "18 ct",
+     "sell_by": null,
+     "weight_lb": 0.13,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 2.98,
+      "promo": null,
+      "ts": "20251209080434",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251209080434/https://www.kroger.com/p/kroger-grade-a-large-white-eggs/0001111060933"
+     }
+    }
+   ]
+  },
+  {
+   "key": "milk_2pct",
+   "name": "Milk, 2%",
+   "lbs_week": 7.2728,
+   "tfp_share": 0.0173,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111041700",
+     "name": "Kroger\u00ae 2% Reduced Fat Milk Gallon, 1 gal",
+     "brand": "Kroger",
+     "size": "1 gal",
+     "sell_by": null,
+     "weight_lb": 8.62,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 3.29,
+      "promo": null,
+      "ts": "20251210184846",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251210184846/https://www.kroger.com/p/kroger-2-reduced-fat-milk-gallon/0001111041700"
+     }
+    }
+   ]
+  },
+  {
+   "key": "tomatoes",
+   "name": "Tomatoes",
+   "lbs_week": 1.2631,
+   "tfp_share": 0.0154,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "drumsticks",
+   "name": "Chicken drumsticks",
+   "lbs_week": 1.9684,
+   "tfp_share": 0.0151,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111063825",
+     "name": "Kroger\u00ae Fresh Uncooked Chicken Drumsticks, 4.5 lb",
+     "brand": "Kroger",
+     "size": "4.5 lb",
+     "sell_by": null,
+     "weight_lb": 4.5,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 5.0,
+      "promo": null,
+      "ts": "20260115231147",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260115231147/https://www.kroger.com/p/kroger-fresh-uncooked-chicken-drumsticks/0001111063825"
+     }
+    },
+    {
+     "upc": "0024071850000",
+     "name": "Simple Truth\u00ae Natural\u02c6 Fresh Chicken Drumsticks, 1 each",
+     "brand": "Simple Truth",
+     "size": "1 each",
+     "sell_by": null,
+     "weight_lb": 1.8,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 5.08,
+      "promo": null,
+      "ts": "20260120204610",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260120204610/https://www.kroger.com/p/simple-truth-all-natural-fresh-chicken-drumsticks/0024071850000"
+     }
+    }
+   ]
+  },
+  {
+   "key": "milk_whole",
+   "name": "Milk, whole",
+   "lbs_week": 5.7236,
+   "tfp_share": 0.0145,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "lettuce",
+   "name": "Lettuce, iceberg",
+   "lbs_week": 1.986,
+   "tfp_share": 0.0144,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "pinto_beans",
+   "name": "Pinto beans, canned",
+   "lbs_week": 3.1967,
+   "tfp_share": 0.0139,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111072565",
+     "name": "Pinto Beans, 15.5 oz",
+     "brand": "Kroger",
+     "size": "15.5 oz",
+     "sell_by": null,
+     "weight_lb": 0.96,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 1.0,
+      "promo": null,
+      "ts": "20260306052930",
+      "early_war": true,
+      "archive_url": "http://web.archive.org/web/20260306052930/https://www.kroger.com/p/pinto-beans/0001111072565"
+     }
+    }
+   ]
+  },
+  {
+   "key": "pork",
+   "name": "Pork loin / roast / shoulder",
+   "lbs_week": 1.3231,
+   "tfp_share": 0.0265,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "white_bread",
+   "name": "White bread",
+   "lbs_week": 1.5216,
+   "tfp_share": 0.0132,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "quinoa",
+   "name": "Quinoa",
+   "lbs_week": 0.3126,
+   "tfp_share": 0.0112,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "oranges",
+   "name": "Oranges",
+   "lbs_week": 1.6744,
+   "tfp_share": 0.0106,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111091836",
+     "name": "Kroger\u00ae Fresh Navel Oranges Bag, 4 lb",
+     "brand": null,
+     "size": "4 lb",
+     "sell_by": "UNIT",
+     "weight_lb": null,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 4.99,
+      "promo": null,
+      "ts": "20251212072557",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251212072557/https://www.kroger.com/p/kroger-fresh-navel-oranges-bag/0001111091836"
+     }
+    },
+    {
+     "upc": "0001111090032",
+     "name": "Private Selection\u00ae Fresh Navel Oranges Heirloom Bag, 3 lb",
+     "brand": "Private Selection",
+     "size": "3 lb",
+     "sell_by": null,
+     "weight_lb": null,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 4.99,
+      "promo": null,
+      "ts": "20260120181202",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260120181202/https://www.kroger.com/p/private-selection-fresh-navel-oranges-heirloom-bag/0001111090032"
+     }
+    }
+   ]
+  },
+  {
+   "key": "cucumbers",
+   "name": "Cucumbers",
+   "lbs_week": 1.0784,
+   "tfp_share": 0.0097,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "corn_canned",
+   "name": "Corn, canned",
+   "lbs_week": 2.017,
+   "tfp_share": 0.0095,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111011383",
+     "name": "Kroger\u00ae Whole Kernel Sweet Golden Corn, 15.25 oz",
+     "brand": "Kroger",
+     "size": "15.25 oz",
+     "sell_by": null,
+     "weight_lb": 0.95,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 0.89,
+      "promo": null,
+      "ts": "20251216091415",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251216091415/https://www.kroger.com/p/kroger-whole-kernel-sweet-golden-corn/0001111011383"
+     }
+    },
+    {
+     "upc": "0001111011370",
+     "name": "Kroger\u00ae Super Sweet Golden Whole Kernel Corn, 15.25 oz",
+     "brand": "Kroger",
+     "size": "15.25 oz",
+     "sell_by": null,
+     "weight_lb": 0.95,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 0.89,
+      "promo": null,
+      "ts": "20260119061832",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20260119061832/https://www.kroger.com/p/kroger-super-sweet-golden-whole-kernel-corn/0001111011370"
+     }
+    }
+   ]
+  },
+  {
+   "key": "chicken_breast",
+   "name": "Chicken breast, boneless",
+   "lbs_week": 0.5482,
+   "tfp_share": 0.0091,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "greek_yogurt",
+   "name": "Greek yogurt, plain nonfat",
+   "lbs_week": 0.543,
+   "tfp_share": 0.0088,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "soy_milk",
+   "name": "Soy milk",
+   "lbs_week": 1.9592,
+   "tfp_share": 0.0083,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "watermelon",
+   "name": "Watermelon",
+   "lbs_week": 2.6159,
+   "tfp_share": 0.0078,
+   "unit": "lb",
+   "products": []
+  },
+  {
+   "key": "black_beans",
+   "name": "Black beans, canned",
+   "lbs_week": 1.4011,
+   "tfp_share": 0.0069,
+   "unit": "lb",
+   "products": [
+    {
+     "upc": "0001111072567",
+     "name": "Kroger Black Beans - 15.25oz can, 15.25 oz",
+     "brand": "Kroger",
+     "size": "15.25 oz",
+     "sell_by": null,
+     "weight_lb": 0.96,
+     "location_id": "02900310",
+     "baseline": {
+      "regular": 1.0,
+      "promo": null,
+      "ts": "20260306112006",
+      "early_war": true,
+      "archive_url": "http://web.archive.org/web/20260306112006/https://www.kroger.com/p/kroger-black-beans-15-25oz-can/0001111072567"
+     }
+    },
+    {
+     "upc": "0001111089687",
+     "name": "Kroger\u00ae Black Beans, 16 oz",
+     "brand": "Kroger",
+     "size": "16 oz",
+     "sell_by": null,
+     "weight_lb": 1.0,
+     "location_id": "02900334",
+     "baseline": {
+      "regular": 1.99,
+      "promo": null,
+      "ts": "20251205200116",
+      "early_war": false,
+      "archive_url": "http://web.archive.org/web/20251205200116/https://www.kroger.com/p/kroger-black-beans/0001111089687"
+     }
+    }
+   ]
+  },
+  {
+   "key": "rice_white",
+   "name": "Rice, white long grain",
+   "lbs_week": 0.9764,
+   "tfp_share": 0.0049,
+   "unit": "lb",
+   "products": []
+  }
+ ]
+}

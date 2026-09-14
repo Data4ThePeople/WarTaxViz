@@ -136,10 +136,19 @@ def main():
 
     L = []
     L.append("# Kroger basket test: a real basket of Thrifty Food Plan foods, before the war and now\n")
-    L.append("Generated %s from `analysis/kroger/compare.py`. Store: Kroger #310, 1790 E Market St, Harrisonburg, VA "
-             "(locationId 02900310). Current prices: %s (%s). Pre-war prices: Wayback Machine snapshots of "
-             "kroger.com product pages, %s to %s.\n" % (date.today().isoformat(), now["date"], now.get("source", "snapshot"),
-                                                       base_dates[0], base_dates[-1]))
+    stores = products.get("stores", {})
+    n_by_store = {}
+    for f in foods:
+        for p in f["products"]:
+            if p["pre_lb"] is not None:
+                loc = next((q["location_id"] for q in prod_by_key[f["key"]]["products"] if q["upc"] == p["upc"]), "?")
+                n_by_store[loc] = n_by_store.get(loc, 0) + 1
+    L.append("Generated %s from `analysis/kroger/compare.py`. Stores: %s. Each product is priced at the store its "
+             "pre-war page was archived from. Current prices: %s (%s). Pre-war prices: Wayback Machine snapshots of "
+             "kroger.com product pages, %s to %s.\n" % (
+                 date.today().isoformat(),
+                 "; ".join("%s (%d products)" % (stores.get(k, k), v) for k, v in sorted(n_by_store.items())),
+                 now["date"], now.get("source", "snapshot"), base_dates[0], base_dates[-1]))
     L.append("## Headline\n")
     L.append("| | Pre-war | Now (%s) | Change |" % now["date"])
     L.append("|---|---|---|---|")
@@ -162,7 +171,7 @@ def main():
     L.append("")
 
     L.append("## Cross-check against BLS average prices (national, unadjusted)\n")
-    L.append("| Food | Kroger #310 change | BLS series | BLS change Feb 2026 to latest |")
+    L.append("| Food | Kroger change | BLS series | BLS change Feb 2026 to latest month with data |")
     L.append("|---|---|---|---|")
     for x in xcheck:
         L.append("| %s | %s | %s | %s (%s) |" % (x["name"], fmt_pct(x["kroger"]), x["label"], fmt_pct(x["bls"]), x["month"]))
@@ -192,7 +201,8 @@ def main():
     L.append("- Pre-war prices come from archived kroger.com product pages (Wayback Machine), which embed the price for "
              "the crawler's default store. The archive date for each product is listed; a January price is a weaker "
              "baseline than a late-February one.")
-    L.append("- One store. This is a store-level check of the national CPI number, not a replacement for it.")
+    L.append("- Two stores in Virginia, both Kroger Mid-Atlantic. This is a store-level check of the national CPI number, not a replacement for it.")
+    L.append("- The BLS cross-check uses each series' latest 2026 month; a month earlier than August means BLS has not published that item since.")
     L.append("- Sizes: milk at %.1f lb per gallon, juice and soy milk at %.4f lb per fl oz, large eggs at %.2f lb per dozen. "
              "Canned beans and corn use net can weight where the TFP quantity is cooked weight; quinoa uses dry weight."
              % (basket["lb_per_gallon_milk"], basket["lb_per_fl_oz_juice"], basket["lb_per_dozen_eggs"]))
